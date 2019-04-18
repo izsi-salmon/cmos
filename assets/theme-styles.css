@@ -42,64 +42,70 @@ html{
         align-items: center;
 }
 
-.nav{
-    margin: 1em 0;
-}
-
-.nav ul{
-    display: flex;
-        justify-content: space-between;
-    list-style: none;
-}
-
-.nav ul li a{
-    margin: 0 1em;
-    text-decoration: none;
-}
-
-.nav ul li a{
-    color: #FFF;
-    cursor: pointer;
-}
-
-.nav ul li ul{
-    background-color: #383838;
-    border-bottom: 0px;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    display: flex;
-        flex-direction: column;
-    margin-top: 1.7em;
-        max-height: 0;
-    position: absolute;        
-    overflow: hidden;
-    transition: max-height 0.3s;
-    z-index: 5;
-}
-
-.nav ul li ul li a{
-    display: block;
-    padding: 0 1.5em 1.2em 1.5em;
-}
-
-.nav ul li ul li:first-of-type a{
-    padding: 1.2em 1.5em;
-}
-
-.drop-down-arrow{
-    color: #FFF;
-    cursor: pointer;
-    margin-left: 0.5em;
-}
-
 .hamburger-icon{
     color: #FFF;
     cursor: pointer;
     font-size: 1.8em;
 }
 
+.nav{
+    background-color: #444;
+    color: #FFF;
+    position: absolute;
+        right: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s;
+    text-align: right;
+    width: 100%;
+    z-index: 1000;
+}
+
+.nav i{
+    display: none;
+}
+
+.nav ul{
+    list-style: none;
+    padding: 0.5em 1em;
+}
+
+.nav ul li{
+    border-bottom: 1px solid #333;
+    padding: 1.1em;
+}
+
+.nav ul li a{
+    color: #FFF;
+    font-size: 1.25em;
+    text-decoration: none;
+}
+
+.nav ul li:last-of-type{
+    border-bottom: none;
+}
+
+.nav ul li ul{
+    margin-bottom: 0.5em;
+    padding: 0;
+}
+
+.nav ul li ul li{
+    border-bottom: none;
+    margin-right: 0.8em;
+    margin-top: 0.5em;
+    padding: 0;
+}
+
+.nav ul li ul li a{
+    display: block;
+    font-size: 0.85em;
+    font-weight: 400;
+}
+
 /* MOBILE MENU */
 
+/*
 .mobile-menu{
     background-color: #444;
     color: #FFF;
@@ -131,6 +137,7 @@ html{
     font-weight: 400;
     margin-bottom: 0.5em;
 }
+*/
 
 .drop-shadow{
     background-color: #000;
@@ -1283,6 +1290,68 @@ a.footer-link{
     
     .visible-desktop{
         display: inherit;
+    }
+    
+    .nav{
+        background-color: transparent;
+        margin: 1em 0;
+        position: relative;
+        max-height: none;
+        width: auto;
+    }
+    
+    .nav i{
+        display: inherit;
+    }
+
+    .nav ul{
+        display: flex;
+            justify-content: space-between;
+        list-style: none;
+        padding: 0;
+    }
+    
+    .nav ul li{
+        border-bottom: none;
+        padding: 0;
+    }
+
+    .nav ul li a{
+        font-size: 1em;
+        margin: 0 1em;
+        text-decoration: none;
+    }
+
+    .nav ul li ul{
+        background-color: #383838;
+        border-bottom: 0px;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        display: flex;
+            flex-direction: column;
+        margin-bottom: 0;
+        margin-top: 1.7em;
+            max-height: 0;
+        position: absolute;        
+        overflow: hidden;
+        transition: max-height 0.3s;
+        z-index: 5;
+    }
+
+    .nav ul li ul li a{
+        display: block;
+        font-size: 1em;
+        padding: 0 1.5em 1.2em 1.5em;
+    }
+
+    .nav ul li ul li:first-of-type a{
+        padding: 1.2em 1.5em;
+    }
+
+    .drop-down-arrow{
+        color: #FFF;
+        cursor: pointer;
+        margin-left: 0.5em;
     }
     
     .header{

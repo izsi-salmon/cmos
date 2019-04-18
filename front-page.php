@@ -36,19 +36,43 @@
        <?= get_bloginfo('description'); ?>
        <div class="underline-grey underline-50 underline-centered"></div>
    </h1>
+   
+   <?php if( get_theme_mod( 'site_blurb_title_setting') != "" ): ?>
+       <h3 class="page-heading"><?php echo get_theme_mod( 'site_blurb_title_setting'); ?></h3>
+   <?php endif; ?>
+   
+   <?php if( get_theme_mod( 'site_blurb_setting') != "" ): ?>
+       <p class="page-blurb"><?php echo get_theme_mod( 'site_blurb_setting'); ?></p>
+   <?php endif; ?>
+   
+   <?php if( get_theme_mod( 'service_1_link_setting') != "" ): ?>
+       <div class="service-menu">
+         
+          <?php if( get_theme_mod( 'service_1_link_setting') != "" ): ?>
+              <a href="<?= get_site_url(); ?>/<?php echo get_theme_mod( 'service_1_link_setting'); ?>" class="service-menu-item">
+                <?php if( get_theme_mod( 'service_1_icon_setting') != "" ): ?>
+                    <div class="service-icon"><?php echo get_theme_mod( 'service_1_icon_setting'); ?></div>
+                <?php endif; ?>
+                <?php if( get_theme_mod( 'service_1_title_setting') != "" ): ?>
+                    <div class="service-name"><?php echo get_theme_mod( 'service_1_title_setting'); ?></div>
+                <?php endif; ?>
+               </a>
+          <?php endif; ?>
+          
+          <?php if( get_theme_mod( 'service_2_link_setting') != "" ): ?>
+              <a href="<?php echo get_site_url(); ?>/<?php echo get_theme_mod( 'service_2_link_setting'); ?>" class="service-menu-item">
+                <?php if( get_theme_mod( 'service_2_icon_setting') != "" ): ?>
+                    <div class="service-icon"><?php echo get_theme_mod( 'service_2_icon_setting'); ?></div>
+                <?php endif; ?>
+                <?php if( get_theme_mod( 'service_2_title_setting') != "" ): ?>
+                    <div class="service-name"><?php echo get_theme_mod( 'service_2_title_setting'); ?></div>
+                <?php endif; ?>
+           </a>
+          <?php endif; ?>
+           
+        </div>
+   <?php endif; ?>
 
-   <h3 class="page-heading">Who are we?</h3>
-<p class="page-blurb">We’re a full commercial cleaning solution that can be tailored to any industry. We are not a franchise. We never will be.</p>
-<div class="service-menu">
-   <a href="commercial-cleaning.html" class="service-menu-item">
-       <div><i class="fas fa-building service-icon"></i></div>
-       <div class="service-name">Commercial Cleaning</div>
-   </a>
-   <a href="common-area-cleaning.html" class="service-menu-item">
-       <div><i class="fas fa-users service-icon"></i></div>
-       <div class="service-name">Common Area Cleaning</div>
-   </a>
-</div>
 </div>
 
 <div class="section testimonial-section">

@@ -49,6 +49,10 @@ function toggleMenu(){
         dropshadow.style.opacity = '0';
         dropshadow.style.pointerEvents = 'none';
     } else{
+        // Setting the mobile nav position based on navbar height
+        var navHeight = navbar.scrollHeight;
+        var mobileNavDiv = document.getElementsByClassName('nav')[0];
+        mobileNavDiv.style.top = navHeight + 'px';
         mobileNavContent.style.maxHeight = mobileNavContent.scrollHeight + 'px';
         dropshadow.style.opacity = '0.4';
         dropshadow.style.pointerEvents = 'auto';
@@ -68,13 +72,9 @@ var setDropdownEventListeners = function(){
         
     }
     
-    console.log('Setting event listeners');
-    console.log(i);
-    
 }();
 
 function addEventListeners(n){
-    console.log(dropdownButton.length);
         
 //        dropdownButton[n].addEventListener("click", function(event){
 //          event.preventDefault()
@@ -102,7 +102,6 @@ function closeDropdown(n){
 }
 
 //function toggleDropdown(n){
-//    console.log(n);
 //    if(dropdownContent[n].style.maxHeight){
 //        dropdownContent[n].style.maxHeight = null;
 //    } else{
