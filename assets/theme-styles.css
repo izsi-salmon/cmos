@@ -81,6 +81,10 @@ html{
     text-decoration: none;
 }
 
+.nav ul li:first-of-type{
+    padding-top: 0;
+}
+
 .nav ul li:last-of-type{
     border-bottom: none;
 }
@@ -103,54 +107,38 @@ html{
     font-weight: 400;
 }
 
-/* MOBILE MENU */
+.cta-header{
+    background-color: #1D5AA3;
+    background-color: #3EAB46;
+    color: #383838;
+    color: #FFF;
+    display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    font-weight: 600;
+    padding: 1em;
+    position: absolute;
+        top: 52px;
+        right: 0;
+    text-transform: uppercase;
+    transition: color, background-color 0.3s;
+    width: 100%;
+}
+
+.cta-header ul{
+    list-style: none;
+}
+
+.cta-header a{
+    color: inherit;
+    text-decoration: none;
+}
+
+.cta-header a i{
+    margin: 0 0.8em 0 0.5em;
+}
 
 /*
-.mobile-menu{
-    background-color: #444;
-    color: #FFF;
-    position: absolute;
-        right: 0;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.5s;
-    text-align: right;
-    width: 100%;
-    z-index: 1000;
-}
-
-.mobile-menu .nav-item{
-    font-size: 1.2em;
-}
-
-.mobile-menu .nav-item:last-of-type{
-    border-bottom: none;
-}
-
-.mobile-sub-menu{
-    margin: 0.7em 0.5em 0 0;
-}
-
-.mobile-sub-menu-item{
-    display: block;
-    font-size: 0.75em;
-    font-weight: 400;
-    margin-bottom: 0.5em;
-}
-*/
-
-.drop-shadow{
-    background-color: #000;
-    position: fixed;
-    pointer-events: none;
-    top: 0;
-    bottom: 0;
-    opacity: 0;
-    transition: 0.5s;
-    width: 100vw;
-    z-index: 999;
-}
-
 .mobile-cta{
     background-color: #1D5AA3;
     background-color: #3EAB46;
@@ -171,6 +159,19 @@ html{
 
 .mobile-cta span{
     margin-right: 0.8em;
+}
+*/
+
+.drop-shadow{
+    background-color: #000;
+    position: fixed;
+    pointer-events: none;
+    top: 0;
+    bottom: 0;
+    opacity: 0;
+    transition: 0.5s;
+    width: 100vw;
+    z-index: 999;
 }
 
 /* SWIPER (Homepage slideshow banner) */
@@ -1294,8 +1295,9 @@ a.footer-link{
     
     .nav{
         background-color: transparent;
-        margin: 1em 0;
-        position: relative;
+        margin: 1em 2em;
+        position: static;
+/*            top: auto;*/
         max-height: none;
         width: auto;
     }
@@ -1336,6 +1338,7 @@ a.footer-link{
         overflow: hidden;
         transition: max-height 0.3s;
         z-index: 5;
+        text-align: left;
     }
 
     .nav ul li ul li a{
@@ -1356,10 +1359,6 @@ a.footer-link{
     
     .header{
         padding: 0.5em 5em;
-    }
-    
-    .nav{
-        margin-right: 3em;
     }
 
     .nav-item{
@@ -1382,14 +1381,17 @@ a.footer-link{
     }
     
     .cta-header{
-        color: #34a73a;
+        background-color: transparent !important;
+        color: #34a73a !important;
         display: flex;
             align-items: center;
         font-weight: 600;
         border: 2px solid #34a73a;
         border-radius: 25px;
         padding: 0.5em 1em;
+        position: static;
         text-transform: uppercase;
+        width: auto;
     }
     
     .cta-header ul{
@@ -1403,11 +1405,12 @@ a.footer-link{
     
     .cta-header a i{
         margin-left: 0.3em;
+        margin-right: 0;
     }
     
     .cta-header:hover {
-        color: #383838;
-        background-color: #34a73a;
+        color: #383838 !important;
+        background-color: #34a73a !important;
         transition: 0.3s;
     }
     

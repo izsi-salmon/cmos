@@ -5,6 +5,7 @@ var dropshadow = document.getElementById('dropshadow');
 // Dropdown menu DOM queries
 var dropdownButton = document.getElementsByClassName('menu-item-has-children');
 var dropdownContent = document.getElementsByClassName('sub-menu');
+var headerCta = document.getElementById('headerCta');
 // Sticky nav bar variables
 var navbar = document.getElementById('navbar');
 var freeQuoteCta = document.getElementById('freequote');
@@ -22,8 +23,6 @@ function stickyNav() {
     }
     if (window.pageYOffset >= sticky) {
     navbar.classList.add('sticky-header');
-    mobileNavContent.style.position = 'fixed';
-    mobileNavContent.style.top = navHeight + 'px';
     if(freeQuoteCta){
         freeQuoteCta.classList.add('sticky-mobile-cta');
         freeQuoteCta.style.top = navHeight + 'px';
@@ -48,6 +47,9 @@ function toggleMenu(){
         mobileNavContent.style.maxHeight = null;
         dropshadow.style.opacity = '0';
         dropshadow.style.pointerEvents = 'none';
+        document.body.style.overflow = 'auto';
+        headerCta.style.backgroundColor = '#3EAB46';
+        headerCta.style.color = '#FFF';
     } else{
         // Setting the mobile nav position based on navbar height
         var navHeight = navbar.scrollHeight;
@@ -56,6 +58,10 @@ function toggleMenu(){
         mobileNavContent.style.maxHeight = mobileNavContent.scrollHeight + 'px';
         dropshadow.style.opacity = '0.4';
         dropshadow.style.pointerEvents = 'auto';
+        document.body.style.overflow = 'hidden';
+        // Change CTA styles
+        headerCta.style.backgroundColor = '#444';
+        headerCta.style.color = '#3EAB46';
     }
 }
 

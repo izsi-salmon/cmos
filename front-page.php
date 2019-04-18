@@ -4,7 +4,7 @@
     $args = array(
         'post_type' => 'slides',
         'order' => 'ASC',
-        'orderby' => 'date'
+        'orderby' => 'menu_order'
     );
     $slides = new WP_Query($args);
 ?>

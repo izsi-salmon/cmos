@@ -32,35 +32,20 @@
 
                 <?php wp_nav_menu( array(
                     'theme_location' => 'header_cta',
-                    'container_class' => 'cta-header visible-desktop'
+                    'container_class' => 'cta-header visible-desktop',
+                    'container_id' => 'headerCta'
                 ) ); ?>
             
         </div>
     </div>
     
-<!--
-    <div class="mobile-menu visible-mobile" id ="mobileMenu">
-        <div class="nav">
-            <div class="nav-item">
-                <span>Services</span>
-                <div class="mobile-sub-menu">
-                    <a href="commercial-cleaning.html" class="mobile-sub-menu-item">Commercial Cleaning</a>
-                    <a href="common-area-cleaning.html" class="mobile-sub-menu-item">Common Area Cleaning</a>
-                </div>
-            </div>
-            <div class="nav-item"><a href="about.html">About</a></div>
-            <div class="nav-item"><a href="people.html">People</a></div>
-            <div class="nav-item"><a href="careers.html">Careers</a></div>
-            <div class="nav-item"><a href="contact.html">Contact</a></div>
-        </div>
-    </div>
--->
-    
     <div class="drop-shadow" id="dropshadow"></div>
     
+<!--
     <div class="mobile-cta visible-mobile" id="freequote">
         <a href="contact.html"><span>Get Free A Quote</span><i class="fas fa-chevron-right"></i></a>
     </div>
+-->
     
     <div id="pageBuffer"></div>
  

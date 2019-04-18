@@ -38,12 +38,43 @@ add_action('init', 'addCustomMenus');
 
 // ----- POST TYPES -----
 
+//// EXAMPLE
+//
+//function add_post_type(){
+//    $labels = array(
+//        'name' => _x('', 'post type name', 'cmosTheme'),
+//        'singular_name' => _x('', 'post type singular name', 'cmosTheme'),
+//        'add_new_item' => _x('Add ', 'Adding ', 'cmosTheme')
+//    );
+//    
+//    $args = array(
+//        'labels' => $labels,
+//        'description' => '',
+//        'public' => true,
+//        'hierarchical' => true,
+//        'show_ui' => true,
+//        'show_in_menu' => true,
+//        'show_in_nav_menus' => false,
+//        'menu_position' => ,
+//        'menu_icon' => 'dashicons-',
+//        'supports' => array(
+//            'title',
+//            'editor',
+//            'thumbnail'
+//        ),
+//        'query_var' => true
+//    );
+//    register_post_type('', $args);
+//}
+
+// Don't forget to add action! :)
+
 
 // SLIDESHOW
 
 function add_slideshow_post_type(){
     $labels = array(
-        'name' => _x('Add slide', 'post type name', 'cmosTheme'),
+        'name' => _x('Slideshow slides', 'post type name', 'cmosTheme'),
         'singular_name' => _x('Add slide', 'post type singular name', 'cmosTheme'),
         'add_new_item' => _x('Add slide', 'adding new slide', 'cmosTheme')
     );
@@ -57,20 +88,50 @@ function add_slideshow_post_type(){
         'show_in_menu' => true,
         'show_in_nav_menus' => false,
         'menu_position' => 5,
-        'menu-icon' => 'dashicons-images-alt2',
+        'menu_icon' => 'dashicons-images-alt2',
         'supports' => array(
             'title',
             'editor',
-            'thumbnail'
+            'thumbnail',
+            'page-attributes'
         ),
         'query_var' => true
     );
     register_post_type('slides', $args);
 }
 
+// TESTIMONIALS
+
+function add_testimonials_post_type(){
+    $labels = array(
+        'name' => _x('Testimonials', 'post type name', 'cmosTheme'),
+        'singular_name' => _x('Testimonial', 'post type singular name', 'cmosTheme'),
+        'add_new_item' => _x('Add testimonial', 'Adding testimonial', 'cmosTheme')
+    );
+    
+    $args = array(
+        'labels' => $labels,
+        'description' => 'a post type that adds testimonials to the home page.',
+        'public' => true,
+        'hierarchical' => true,
+        'show_ui' => true,
+        'show_in_menu' => true,
+        'show_in_nav_menus' => false,
+        'menu_position' => 6,
+        'menu_icon' => 'dashicons-format-quote',
+        'supports' => array(
+            'title',
+            'editor'
+        ),
+        'query_var' => true
+    );
+    register_post_type('testimonials', $args);
+}
+
 // ----- ADD POST TYPES ------
 
 add_action('init','add_slideshow_post_type');
+add_action('init','add_testimonials_post_type');
 
 // ----- REQUIREMENTS -----
 
