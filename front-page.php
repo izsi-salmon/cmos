@@ -1,12 +1,21 @@
 <?php get_header(); ?>
   
 <?php
-    $args = array(
+
+    $slideArgs = array(
         'post_type' => 'slides',
         'order' => 'ASC',
         'orderby' => 'menu_order'
     );
-    $slides = new WP_Query($args);
+    $slides = new WP_Query($slideArgs);
+
+    $testimonialArgs = array(
+        'post_type' => 'testimonials',
+        'order' => 'ASC',
+        'orderby' => 'date'
+    );
+    $testimonials = new WP_Query($testimonialArgs);
+
 ?>
 <?php if($slides->have_posts()): ?>
     <div class="swiper-container swiper1">
@@ -75,65 +84,47 @@
 
 </div>
 
-<div class="section testimonial-section">
-
-   <div class="testimonial-heading-wrapper">
-       <h2 class="testimonial-heading">
-           What our clients say
-           <div class="underline-grey underline-60 underline-wrap"></div>
-       </h2>
-   </div>
-
-   <div class="testimonial-container">
-
-        <div class="testimonial-box">
-            <div class="testimonial-content">
-                <div class="testimonial-title">
-                    What stands out for me about cmos is the enthusiasm and energy the team give every day.
+<?php if($testimonials->have_posts()): ?>
+    <div class="section testimonial-section">
+       <div class="testimonial-heading-wrapper">
+           <h2 class="testimonial-heading">
+               What our clients say
+               <div class="underline-grey underline-60 underline-wrap"></div>
+           </h2>
+       </div>
+       <div class="testimonial-container">
+        <?php while($testimonials->have_posts()): $testimonials->the_post(); ?>
+              
+              <?php
+                  $postID = get_the_id();
+                  $association = get_post_meta($postID, 'client_association', true);
+                  $heading = get_post_meta($postID, 'testimonial_heading', true);
+              ?>
+               
+               <div class="testimonial-box">
+                    <div class="testimonial-content">
+                        <?php if($heading): ?>
+                            <div class="testimonial-title">
+                                <?= $heading ?>
+                            </div>
+                        <?php endif; ?>
+                        
+                        <div class="testimonial-parag">
+                            <p><?php the_content() ?></p>
+                        </div>
+                        <div class="testimonial-sign">
+                            <h5><?php the_title() ?></h5>
+                            <?php if($association): ?>
+                                <p><?= $association ?></p>
+                            <?php endif; ?>
+                        </div>
+                    </div>
                 </div>
-                <div class="testimonial-parag">
-                    <p>They really work hard to deliver on their promise of a top quality service. I can rely on them to get the job done right and done efficiently with virtually no issues. I also like to know that the people who are on the end of the vacuum are being looked after by their employer and CMOS is quite clearly doing that. I highly recommend CMOS to any other commercial property managers out there. They’re raising the standard for commercial cleaning.</p>
-                </div>
-                <div class="testimonial-sign">
-                    <h5>Jonathan Carr</h5>
-                    <p>Bayleys Property Services</p>
-                </div>
-            </div>
+                
+        <?php endwhile; ?>
         </div>
-
-        <div class="testimonial-box">
-            <div class="testimonial-content">
-                <div class="testimonial-title">
-                    What stands out for me about cmos is the enthusiasm and energy the team give every day.
-                </div>
-                <div class="testimonial-parag">
-                    <p>They really work hard to deliver on their promise of a top quality service. I can rely on them to get the job done right and done efficiently with virtually no issues. I also like to know that the people who are on the end of the vacuum are being looked after by their employer and CMOS is quite clearly doing that. I highly recommend CMOS to any other commercial property managers out there. They’re raising the standard for commercial cleaning.</p>
-                </div>
-                <div class="testimonial-sign">
-                    <h5>Jonathan Carr</h5>
-                    <p>Bayleys Property Services</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="testimonial-box">
-            <div class="testimonial-content">
-                <div class="testimonial-title">
-                    What stands out for me about cmos is the enthusiasm and energy the team give every day.
-                </div>
-                <div class="testimonial-parag">
-                    <p>They really work hard to deliver on their promise of a top quality service. I can rely on them to get the job done right and done efficiently with virtually no issues. I also like to know that the people who are on the end of the vacuum are being looked after by their employer and CMOS is quite clearly doing that. I highly recommend CMOS to any other commercial property managers out there. They’re raising the standard for commercial cleaning.</p>
-                </div>
-                <div class="testimonial-sign">
-                    <h5>Jonathan Carr</h5>
-                    <p>Bayleys Property Services</p>
-                </div>
-            </div>
-        </div>
-
     </div>
-
-</div>
+<?php endif; ?>
 
 
 <?php get_footer(); ?>

@@ -1474,6 +1474,14 @@ a.footer-link{
         flex: 0.98;
     }
     
+    .testimonial-container{
+        flex-wrap: wrap;
+    }
+    
+    .testimonial-box{
+        width: 430px;
+    }
+    
     /* SERVICE PAGE */
     
     .section-service-blurb{
