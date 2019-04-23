@@ -1,37 +1,72 @@
-    <div class="footer">
+<?php
+
+    $locationsArgs = array(
+        'post_type' => 'locations',
+        'order' => 'ASC',
+        'orderby' => 'menu_order'
+        );
+    $locations = new WP_Query($locationsArgs);
+
+?>
+       
+       <div class="footer">
         <div class="footer-content">
            
             <div class="contact-buttons">
-                <div class="phone-button">
-                    <i class="fas fa-phone"></i><span>0800 002 557</span>
-                </div>
-                <a href="contact.html" class="contact-button">
-                    Contact us
-                </a>
+               
+               <?php if( get_theme_mod( 'phone_button_text_setting') != ""): ?>
+                   <div class="phone-button">
+                       <?php if( get_theme_mod( 'phone_button_icon_setting')): ?>
+                           <?php echo get_theme_mod( 'phone_button_icon_setting'); ?>
+                       <?php endif; ?>
+                        <span><?php echo get_theme_mod( 'phone_button_text_setting'); ?></span>
+                    </div>
+               <?php endif; ?>
+                
+                
+                <?php if ( has_nav_menu( 'footer_cta' ) ) {
+                     wp_nav_menu( array(
+                        'theme_location' => 'footer_cta',
+                        'container_class' => 'cta-footer'
+                     ) );
+                } ?>
+                
             </div>
             
-            <a href="people.html" class="footer-link">Contact a member of the team <i class="fas fa-chevron-right"></i></a>
+            <div class="footer-inner">
             
-            <div class="locations-container">
-               
-                <div class="location">
-                    <h6 class="location-title">Auckland</h6>
-                    <p class="location-address">51 Randolph Street, Eden Terrace, Auckland 1010</p>
-                </div>
-                
-                <div class="location">
-                    <h6 class="location-title">Wellington</h6>
-                    <p class="location-address">16 Kaiwharawhara Road, Kaiwharawhaura, Wellington 6035</p>
-                </div>
-                
+                <?php if ( has_nav_menu( 'adtnl_footer_links' ) ) {
+                     wp_nav_menu( array(
+                        'theme_location' => 'adtnl_footer_links',
+                        'container_class' => 'adtnl-footer-links'
+                     ) );
+                } ?>
+            
+                <?php if($locations->have_posts()): ?>
+                       <div class="locations-container">
+                            <?php while($locations->have_posts()): $locations->the_post(); ?>
+                                <div class="location">
+                                    <h6 class="location-title"><?php the_title() ?></h6>
+                                    <p class="location-address"><?php the_content()?></p>
+                                </div>
+                            <?php endwhile; ?>
+                        </div>
+                <?php endif; ?>
+            
             </div>
             
         </div>
     </div>
-    <div class="footer-bar">
-        <a href="https://www.facebook.com/CMOfficeServices/" target="_blank"><i class="fab fa-facebook-f"></i></a>
-        <a href=""><i class="fab fa-google-plus-g"></i></a>
-    </div>
+    <?php if ( has_nav_menu( 'social_media_links' ) ): ?>
+        <div class="footer-bar">
+         <?php wp_nav_menu( array(
+            'theme_location' => 'social_media_links',
+            'container_class' => 'adtnl-footer-links'
+         ) );
+         ?>
+         </div>
+    <?php endif; ?>
+    
     
     <?php wp_footer(); ?>
 </body>

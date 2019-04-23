@@ -50,6 +50,10 @@ function toggleMenu(){
         document.body.style.overflow = 'auto';
         headerCta.style.backgroundColor = '#3EAB46';
         headerCta.style.color = '#FFF';
+        if ((window.innerWidth >= 600) && (window.innerWidth <= 1200)){
+            headerCta.style.width = '100%';
+            headerCta.style.boxSizing = 'content-box';
+        }
     } else{
         // Setting the mobile nav position based on navbar height
         var navHeight = navbar.scrollHeight;
@@ -62,6 +66,10 @@ function toggleMenu(){
         // Change CTA styles
         headerCta.style.backgroundColor = '#444';
         headerCta.style.color = '#3EAB46';
+        if ((window.innerWidth >= 600) && (window.innerWidth <= 1200)){
+            headerCta.style.width = '400px';
+            headerCta.style.boxSizing = 'border-box';
+        }
     }
 }
 

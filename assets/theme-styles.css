@@ -121,7 +121,7 @@ html{
         top: 52px;
         right: 0;
     text-transform: uppercase;
-    transition: color, background-color 0.3s;
+    transition: 0.3s;
     width: 100%;
 }
 
@@ -745,49 +745,62 @@ a.value-cta{
     margin-right: 0.4em;
 }
 
-.contact-button{
+.cta-footer{
     border: 2px solid #2EA3F2;
     border-radius: 25px;
+    color: #2EA3F2;
     font-size: 0.9em;
     font-weight: 600;
-    padding: 0.3em 0.7em;
+    padding: 0.5em 1em;
     text-transform: uppercase;
 }
 
-.contact-button:hover{
+.cta-footer:hover{
     background-color: #2EA3F2;
     color: #383838;
     transition: 0.3s;
 }
 
-a.contact-button{
-    color: #2EA3F2;
+.cta-footer ul{
+    list-style: none;
+    line-height: 0;
+}
+
+.cta-footer ul li a{
+    color: inherit;
     text-decoration: none;
 }
 
-.footer-link{
-    display: flex;
-        align-items: center;
+.cta-footer i{
+    margin-left: 0.3em;
+}
+
+.footer-inner{
     margin: 0 auto;
     width: 90%;
 }
 
-.footer-link:hover{
+.adtnl-footer-links ul{
+    display: inline-block;
+    list-style: none;
+}
+
+.adtnl-footer-links ul li{
+    color: #2EA3F2;
+    margin-bottom: 0.5em;
+}
+
+.adtnl-footer-links ul li:hover{
     color: #30BAFF;
 }
 
-a.footer-link{
-    color: #2EA3F2;
+.adtnl-footer-links ul li a{
+    color: inherit;
     text-decoration: none;
 }
 
-.footer-link i{
+.adtnl-footer-links i{
     margin-left: 0.4em;
-}
-
-.locations-container{
-    margin: 0 auto;
-    width: 90%;
 }
 
 .location{
@@ -807,19 +820,28 @@ a.footer-link{
 .footer-bar{
     background-color: #383838;
     color: #555;
+    padding: 1em 2em;
+}
+
+.footer-bar ul{
     display: flex;
         justify-content: flex-end;
-    padding: 1em;
+    list-style: none;
 }
 
-.footer-bar a {
+.footer-bar ul li {
     color: #2EA3F2;
-    font-size: 1.5em;
-    margin-left: 1.3em;
+    font-size: 1.8em;
+    margin: 0;
 }
 
-.footer-bar a:hover{
+.footer-bar ul li:hover{
     color: #30BAFF;
+}
+
+.footer-bar ul li a{
+    color: inherit;
+    text-decoration: none;
 }
 
 
@@ -877,7 +899,7 @@ a.footer-link{
 
 @media only screen and (min-width: 600px){
     
-    .mobile-menu{
+    .nav{
         max-width: 400px;
     }
     
@@ -956,8 +978,8 @@ a.footer-link{
         flex: 0.95;
     }
     
-    .testimonial-content{
-        padding: 3em 0;
+    .testimonial-container{
+        flex-wrap: wrap;
     }
     
     /* PAGE FEATURES */
@@ -1153,12 +1175,21 @@ a.footer-link{
     
     .testimonial-container{
         display: flex;
+        justify-content: center;
+            flex-wrap: wrap;
         margin: 0 auto;
+        width: 90%;
         max-width: 1300px;
     }
     
     .testimonial-box{
         border-bottom: none;
+        max-width: none;
+        width: 430px;
+    }
+    
+    .testimonial-content{
+        width: 100%;
     }
     
 }
@@ -1299,6 +1330,7 @@ a.footer-link{
         position: static;
 /*            top: auto;*/
         max-height: none;
+        max-width: none;
         width: auto;
     }
     
@@ -1474,14 +1506,6 @@ a.footer-link{
         flex: 0.98;
     }
     
-    .testimonial-container{
-        flex-wrap: wrap;
-    }
-    
-    .testimonial-box{
-        width: 430px;
-    }
-    
     /* SERVICE PAGE */
     
     .section-service-blurb{
@@ -1506,6 +1530,10 @@ a.footer-link{
     
     .contact-buttons{
         font-size: 1.3em;
+    }
+    
+    .footer-inner{
+        width: 85%;
     }
     
     .visible-mobile{

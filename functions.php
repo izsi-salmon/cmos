@@ -10,7 +10,7 @@ function addCustomThemeStyles(){
   // Scripts
   wp_enqueue_script('jquery');
   wp_enqueue_script('swiperscript', 'https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js', array(), '4.5.0', true);
-//  wp_enqueue_script('themescripts', get_template_directory_uri().'/assets/theme-script.js', array(), '0.0.1', true);
+  wp_enqueue_script('themescripts', get_template_directory_uri().'/assets/theme-script.js', array(), '0.0.1', true);
   global $wp_query;
 }
 add_action('wp_enqueue_scripts', 'addCustomThemeStyles');
@@ -30,11 +30,15 @@ function addCustomLogo() {
 }
 add_action('init', 'addCustomLogo');
 
-// MENUS
+// ----- MENUS -----
+
 function addCustomMenus(){
-  add_theme_support('menus');
-  register_nav_menu('header_nav', 'Navigation Bar');
-  register_nav_menu('header_cta', 'Header CTA');
+    add_theme_support('menus');
+    register_nav_menu('header_nav', 'Navigation Bar');
+    register_nav_menu('header_cta', 'Header CTA');
+    register_nav_menu('footer_cta', 'Footer CTA');
+    register_nav_menu('adtnl_footer_links', 'Additional Footer Links');
+    register_nav_menu('social_media_links', 'Social Media Links');
 }
 add_action('init', 'addCustomMenus');
 
@@ -130,10 +134,40 @@ function add_testimonials_post_type(){
     register_post_type('testimonials', $args);
 }
 
+// LOCATIONS
+
+function add_locations_post_type(){
+    $labels = array(
+        'name' => _x('Locations', 'post type name', 'cmosTheme'),
+        'singular_name' => _x('', 'post type singular name', 'cmosTheme'),
+        'add_new_item' => _x('Add location', 'Adding location', 'cmosTheme')
+    );
+    
+    $args = array(
+        'labels' => $labels,
+        'description' => 'A post type that creates the location addresses',
+        'public' => true,
+        'hierarchical' => true,
+        'show_ui' => true,
+        'show_in_menu' => true,
+        'show_in_nav_menus' => false,
+        'menu_position' => 7,
+        'menu_icon' => 'dashicons-location',
+        'supports' => array(
+            'title',
+            'editor',
+            'page-attributes'
+        ),
+        'query_var' => true
+    );
+    register_post_type('locations', $args);
+}
+
 // ----- ADD POST TYPES ------
 
 add_action('init','add_slideshow_post_type');
 add_action('init','add_testimonials_post_type');
+add_action('init','add_locations_post_type');
 
 // ----- REQUIREMENTS -----
 

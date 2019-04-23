@@ -18,6 +18,10 @@ function custom_theme_customizer( $wp_customize ){
         'panel' => 'custom_homepage_content'
     ));
     
+    $wp_customize->add_section('footer_content', array(
+        'title' => __('Footer Content', 'cmosTheme')
+    ));
+    
     // SITE BLURB TITLE
     
     $wp_customize->add_setting('site_blurb_title_setting', array(
@@ -186,6 +190,49 @@ function custom_theme_customizer( $wp_customize ){
         )
     );
     
+    // ----- FOOTER CONTENT -----
+    
+    // Phone button text
+    $wp_customize->add_setting('phone_button_text_setting', array(
+            'default' => '',
+            'transport' => 'refresh',
+            'sanitize_callback' => 'sanitize_footerText'
+    ));
+    
+    $wp_customize->add_control(
+        new WP_Customize_Control(
+            $wp_customize,
+            'phone_button_text_control',
+            array(
+                'label' => __('Phone number', 'cmosTheme'),
+                'description' => 'Add a phone number to the footer: ',
+                'section' => 'footer_content',
+                'settings' => 'phone_button_text_setting',
+                'type' => 'text'
+            )
+        )
+    );
+    
+    // Phone button icon
+    $wp_customize->add_setting('phone_button_icon_setting', array(
+            'default' => '<i class="fas fa-phone"></i>',
+            'transport' => 'refresh'
+    ));
+    
+    $wp_customize->add_control(
+        new WP_Customize_Control(
+            $wp_customize,
+            'phone_button_icon_control',
+            array(
+                'label' => __('Phone icon', 'cmosTheme'),
+                'description' => 'Add an icon with <a href="https://fontawesome.com/icons" target="_blank"> Font Awesome </a> by copying an icon\'s HTML.',
+                'section' => 'footer_content',
+                'settings' => 'phone_button_icon_setting',
+                'type' => 'text'
+            )
+        )
+    );
+    
     // SANITIZE TEXT
     
     // Homepage text
@@ -207,10 +254,6 @@ function custom_theme_customizer( $wp_customize ){
 	    return sanitize_text_field( $link1 );
 	}
     
-//    function sanitize_icon1( $icon1 ) {
-//	    return sanitize_text_field( $icon1 );
-//	}
-    
     // 2
     function sanitize_title2( $title2 ) {
 	    return sanitize_text_field( $title2 );
@@ -220,9 +263,10 @@ function custom_theme_customizer( $wp_customize ){
 	    return sanitize_text_field( $link2 );
 	}
     
-//    function sanitize_icon2( $icon2 ) {
-//	    return sanitize_text_field( $icon2 );
-//	}
+    // Footer text
+    function sanitize_footerText( $footerText ) {
+	    return esc_textarea( $footerText );
+	}
     
 }
 

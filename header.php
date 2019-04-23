@@ -25,27 +25,26 @@
             <i class="fas fa-bars visible-mobile hamburger-icon" id="hamburgerIcon"></i>
             
             <div class="nav" id="mobileMenu">
-                <?php wp_nav_menu( array(
-                    'theme_location' => 'header_nav'
-                ) ); ?>
+               <?php if ( has_nav_menu( 'header_nav' ) ) {
+                     wp_nav_menu( array(
+                        'theme_location' => 'header_nav'
+                     ) );
+                } ?>
             </div>
-
-                <?php wp_nav_menu( array(
-                    'theme_location' => 'header_cta',
-                    'container_class' => 'cta-header visible-desktop',
-                    'container_id' => 'headerCta'
-                ) ); ?>
+                
+                <?php if ( has_nav_menu( 'header_cta' ) ) {
+                     wp_nav_menu( array(
+                        'theme_location' => 'header_cta',
+                        'container_class' => 'cta-header visible-desktop',
+                        'container_id' => 'headerCta'
+                     ) );
+                } ?>
             
         </div>
     </div>
     
     <div class="drop-shadow" id="dropshadow"></div>
-    
-<!--
-    <div class="mobile-cta visible-mobile" id="freequote">
-        <a href="contact.html"><span>Get Free A Quote</span><i class="fas fa-chevron-right"></i></a>
-    </div>
--->
+
     
     <div id="pageBuffer"></div>
  
