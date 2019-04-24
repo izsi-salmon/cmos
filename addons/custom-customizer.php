@@ -4,7 +4,13 @@ function custom_theme_customizer( $wp_customize ){
     
     $wp_customize->add_panel( 'custom_homepage_content', array(
       'title' => __( 'Home Page Content' ),
-      'description' => $description, // Include html tags such as <p>.
+      'description' => $description,
+      'priority' => 150
+    ) );
+    
+    $wp_customize->add_panel( 'adtnl_ctas', array(
+      'title' => __( 'Additioinal CTA\'s' ),
+      'description' => $description,
       'priority' => 160
     ) );
     
@@ -16,6 +22,11 @@ function custom_theme_customizer( $wp_customize ){
     $wp_customize->add_section('homepage_links', array(
         'title' => __('Services menu', 'cmosTheme'),
         'panel' => 'custom_homepage_content'
+    ));
+    
+    $wp_customize->add_section('about_cta', array(
+        'title' => __('About CTA', 'cmosTheme'),
+        'panel' => 'adtnl_ctas'
     ));
     
     $wp_customize->add_section('footer_content', array(
@@ -190,6 +201,71 @@ function custom_theme_customizer( $wp_customize ){
         )
     );
     
+    // ----- CTA'S -----
+    
+    // ABOUT CTA
+    
+    // About CTA Text
+    $wp_customize->add_setting('about_cta_text_setting', array(
+            'default' => '',
+            'transport' => 'refresh',
+            'sanitize_callback' => 'sanitize_aboutCTAText'
+    ));
+    
+    $wp_customize->add_control(
+        new WP_Customize_Control(
+            $wp_customize,
+            'about_cta_text_control',
+            array(
+                'label' => __('CTA text', 'cmosTheme'),
+                'section' => 'about_cta',
+                'settings' => 'about_cta_text_setting',
+                'type' => 'text'
+            )
+        )
+    );
+    
+    // About CTA Link
+    $wp_customize->add_setting('about_cta_link_setting', array(
+            'default' => '',
+            'transport' => 'refresh'
+    ));
+    
+    $wp_customize->add_control(
+        new WP_Customize_Control(
+            $wp_customize,
+            'about_cta_link_control',
+            array(
+                'label' => __('CTA Link', 'cmosTheme'),
+                'description' => 'Add the full url to a page, eg: '.get_site_url().'/contact',
+                'section' => 'about_cta',
+                'settings' => 'about_cta_link_setting',
+                'type' => 'text'
+            )
+        )
+    );
+    
+    // About CTA Tagline
+    $wp_customize->add_setting('about_cta_tagline_setting', array(
+            'default' => '',
+            'transport' => 'refresh',
+            'sanitize_callback' => 'sanitize_aboutCTATagline'
+    ));
+    
+    $wp_customize->add_control(
+        new WP_Customize_Control(
+            $wp_customize,
+            'about_cta_tagline_control',
+            array(
+                'label' => __('CTA Tagline', 'cmosTheme'),
+                'description' => 'Add a tagline to this CTA.',
+                'section' => 'about_cta',
+                'settings' => 'about_cta_tagline_setting',
+                'type' => 'textarea'
+            )
+        )
+    );
+    
     // ----- FOOTER CONTENT -----
     
     // Phone button text
@@ -267,6 +343,16 @@ function custom_theme_customizer( $wp_customize ){
     function sanitize_footerText( $footerText ) {
 	    return esc_textarea( $footerText );
 	}
+    
+    // About CTA text
+    function sanitize_aboutCTAText($aboutCTAText){
+        return sanitize_text_field( $aboutCTAText );
+    }
+    
+    // About CTA tagline
+    function sanitize_aboutCTATagline($aboutCTATagline){
+        return sanitize_text_field( $aboutCTATagline);
+    }
     
 }
 

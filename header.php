@@ -44,9 +44,6 @@
     </div>
     
     <div class="drop-shadow" id="dropshadow"></div>
-
-    
-    <div id="pageBuffer"></div>
  
 
 

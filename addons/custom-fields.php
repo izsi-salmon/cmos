@@ -9,26 +9,42 @@ add_action('admin_enqueue_scripts', 'admin_my_enqueue');
 
 $metaboxes = array(
     'testimonial_heading' => array(
-      'title' => __('Testimonial heading', 'shPhotography'),
+      'title' => __('Testimonial heading', 'cmosTheme'),
       'applicableto' => 'testimonials',
       'location' => 'normal',
       'priority' => 'high',
       'fields' => array(
           'testimonial_heading' => array(
-              'title' => __('Add a stand out heading to the top of the testimonial: ', 'shPhotography'),
-              'type' => 'header_text',
+              'title' => __('Add a stand out heading to the top of the testimonial: ', 'cmosTheme'),
+              'type' => 'header_text'
           )
       )
     ),
     'testimonial_association' => array(
-      'title' => __('Client Association', 'shPhotography'),
+      'title' => __('Client Association', 'cmosTheme'),
       'applicableto' => 'testimonials',
       'location' => 'normal',
       'priority' => 'high',
       'fields' => array(
           'client_association' => array(
-              'title' => __('Add the client\'s association: ', 'shPhotography'),
-              'type' => 'association_text',
+              'title' => __('Add the client\'s association: ', 'cmosTheme'),
+              'type' => 'association_text'
+          )
+      )
+    ),
+    'aboutValue_cta' => array(
+      'title' => __('Value CTA', 'cmosTheme'),
+      'applicableto' => 'aboutValues',
+      'location' => 'normal',
+      'priority' => 'high',
+      'fields' => array(
+          'aboutValue_cta_link' => array(
+              'title' => __('Add the CTA link: ', 'cmosTheme'),
+              'type' => 'cta_link_text'
+          ),
+          'aboutValue_cta_text' => array(
+              'title' => __('CTA Text: ', 'cmosTheme'),
+              'type' => 'cta_text_text'
           )
       )
     )
@@ -58,8 +74,14 @@ function show_metaboxes( $post, $args ) {
                 case 'association_text':
                 $output .= '<div class="form-group"><label for="' . $id . '">' . $field['title'] . '</label><input class="customInput" id="' . $id . '" type="text" name="' . $id . '" value="' . $custom[$id][0] . '" style="width: 100%;" /></div>';
                 break;
+                case 'cta_link_text':
+                $output .= '<div class="form-group"><label for="' . $id . '">' . $field['title'] . '</label><input class="customInput" id="' . $id . '" type="text" name="' . $id . '" value="' . $custom[$id][0] . '" style="width: 100%;" /></div>';
+                break;
+                case 'cta_text_text':
+                $output .= '<div class="form-group"><label for="' . $id . '">' . $field['title'] . '</label><input class="customInput" id="' . $id . '" type="text" name="' . $id . '" value="' . $custom[$id][0] . '" style="width: 100%;" /></div>';
+                break;
                 default:
-                    $output .= '<div class="form-group"><label for="' . $id . '">' . $field['title'] . '</label><input class="customInput" id="' . $id . '" type="text" name="' . $id . '" value="' . $custom[$id][0] . '" style="width: 100%;" /></div>';
+                $output .= '<div class="form-group"><label for="' . $id . '">' . $field['title'] . '</label><input class="customInput" id="' . $id . '" type="text" name="' . $id . '" value="' . $custom[$id][0] . '" style="width: 100%;" /></div>';
                 break;
             }
         }

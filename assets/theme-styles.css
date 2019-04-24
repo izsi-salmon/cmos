@@ -284,6 +284,12 @@ html{
     width: 100%;
 }
 
+.section-title{
+    font-family: 'Roboto Condensed', sans-serif;
+    margin: 1em 2em;
+    text-transform: uppercase;
+}
+
 .section{
     padding: 1.7em 0;
 }
@@ -391,11 +397,6 @@ a.service-menu-item{
     font-weight: 600;
     text-decoration: none;
     text-transform: uppercase;
-}
-
-a.service-menu-item:hover .service-icon{
-    font-size: 3.1em;
-    transition: font-size 0.2s;
 }
 
 .service-icon{
@@ -632,12 +633,6 @@ a.value-cta{
     margin-bottom: 1em;
 }
 
-.section-title{
-    font-family: 'Roboto Condensed', sans-serif;
-    margin-bottom: 0.5em;
-    text-transform: uppercase;
-}
-
 .phone-flex{
     font-size: 1.1em;
     display: flex;
@@ -853,13 +848,6 @@ a.value-cta{
     width: 100%;
     top: 0;
     
-}
-
-.sticky-mobile-cta{
-    box-sizing: border-box;
-    position: fixed;
-    width: 100%;
-    z-index: 5;
 }
 
 .swiper-container-sticky{
@@ -1078,6 +1066,8 @@ a.value-cta{
     
     /* ^ PAGE FEATURES */
     
+    /* SERVICE MENU */
+    
     .service-menu{
         display: flex;
         margin: 0 auto 0 auto;
@@ -1091,6 +1081,11 @@ a.value-cta{
     
     .service-name{
         font-size: 1.2em;
+    }
+    
+    a.service-menu-item:hover .service-icon{
+        font-size: 3.1em;
+        transition: font-size 0.2s;
     }
     
     /* SERVICE PAGE */
@@ -1176,7 +1171,6 @@ a.value-cta{
     .testimonial-container{
         display: flex;
         justify-content: center;
-            flex-wrap: wrap;
         margin: 0 auto;
         width: 90%;
         max-width: 1300px;
@@ -1237,7 +1231,7 @@ a.value-cta{
     .about-blurb-container{
         display: flex;
             justify-content: space-between;
-        margin-top: 3.5em;
+        margin-top: 1em;
         width: 70%;
     }
     
@@ -1328,7 +1322,6 @@ a.value-cta{
         background-color: transparent;
         margin: 1em 2em;
         position: static;
-/*            top: auto;*/
         max-height: none;
         max-width: none;
         width: auto;
@@ -1423,7 +1416,7 @@ a.value-cta{
         padding: 0.5em 1em;
         position: static;
         text-transform: uppercase;
-        width: auto;
+        width: auto !important;
     }
     
     .cta-header ul{
@@ -1542,11 +1535,10 @@ a.value-cta{
     
 }
 
-
 @media only screen and (min-width: 1500px){
     
     .swiper-container, .banner-image{
-        min-height: 35em;
+        min-height: 30em;
     }
     
     .page-title{

@@ -6,36 +6,48 @@ var dropshadow = document.getElementById('dropshadow');
 var dropdownButton = document.getElementsByClassName('menu-item-has-children');
 var dropdownContent = document.getElementsByClassName('sub-menu');
 var headerCta = document.getElementById('headerCta');
+var headerCtaStyles = document.getElementsByClassName('cta-header')[0];
 // Sticky nav bar variables
 var navbar = document.getElementById('navbar');
-var freeQuoteCta = document.getElementById('freequote');
 var pageBuffer = document.getElementById('pageBuffer');
 var sticky = navbar.offsetHeight;
 // Document title DOM queries
 var docTitle = 'CMOS – Commercial Cleaning Company';
 var titleMessage = 'Hey, come back!';
 
+// Function setting the page content to sit below the navigation (mobile only)
+function pageMargin() {
+    if(headerCta && window.innerWidth < 1200){
+        var ctaHeight = headerCta.scrollHeight;
+        pageBuffer.style.marginTop = ctaHeight + 'px';
+    } else{
+        pageBuffer.style.marginTop = 0;
+    }
+}
+
+document.body.onload = function() {pageMargin()};
+window.onresize = function() {pageMargin()};
+
 // Function controlling sticky nav ability
 function stickyNav() {
     var navHeight = navbar.scrollHeight;
-    if(freeQuoteCta){
-        var ctaHeight = freeQuoteCta.scrollHeight;
+    if(headerCta && window.innerWidth < 1200){
+        var ctaHeight = headerCta.scrollHeight;
     }
     if (window.pageYOffset >= sticky) {
     navbar.classList.add('sticky-header');
-    if(freeQuoteCta){
-        freeQuoteCta.classList.add('sticky-mobile-cta');
-        freeQuoteCta.style.top = navHeight + 'px';
+    if(headerCta && window.innerWidth < 1200){
         pageBuffer.style.marginTop = navHeight + ctaHeight +'px';
     } else{
         pageBuffer.style.marginTop = navHeight + 'px';
     }
   } else {
-    navbar.classList.remove('sticky-header');
-    pageBuffer.style.marginTop = 0;
-    if(freeQuoteCta){
-        freeQuoteCta.classList.remove('sticky-mobile-cta');
-    }
+        navbar.classList.remove('sticky-header');
+        if(headerCta && window.innerWidth < 1200){
+            pageBuffer.style.marginTop = ctaHeight + 'px';
+        } else{
+            pageBuffer.style.marginTop = 0;
+        }
   }
 }
 window.onscroll = function() {stickyNav()};

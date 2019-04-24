@@ -8,9 +8,10 @@
 ?>
   
 <?php get_header(); ?>
+<?php require 'includes/page-buffer.php'; ?>
+<?php require 'includes/banner.php'; ?>
     
-    <div class="section contact-section">
-       <h1 class="section-title">Contact us</h1>
+    <div class="contact-section">
         <div class="contact-container">
             
             <div class="contact-collumn">

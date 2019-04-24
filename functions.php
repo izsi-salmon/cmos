@@ -19,6 +19,7 @@ add_action('wp_enqueue_scripts', 'addCustomThemeStyles');
 
 // Post thumbnails
 add_theme_support('post-thumbnails');
+add_theme_support( 'custom-header' );
 
 // Custom logo
 function addCustomLogo() {
@@ -139,7 +140,7 @@ function add_testimonials_post_type(){
 function add_locations_post_type(){
     $labels = array(
         'name' => _x('Locations', 'post type name', 'cmosTheme'),
-        'singular_name' => _x('', 'post type singular name', 'cmosTheme'),
+        'singular_name' => _x('Location', 'post type singular name', 'cmosTheme'),
         'add_new_item' => _x('Add location', 'Adding location', 'cmosTheme')
     );
     
@@ -163,11 +164,40 @@ function add_locations_post_type(){
     register_post_type('locations', $args);
 }
 
+// ABOUT US: VALUES
+
+function add_aboutValues_post_type(){
+    $labels = array(
+        'name' => _x('About us: values', 'post type name', 'cmosTheme'),
+        'singular_name' => _x('About us: value', 'post type singular name', 'cmosTheme'),
+        'add_new_item' => _x('Add value to about page', 'Adding ', 'cmosTheme')
+    );
+    
+    $args = array(
+        'labels' => $labels,
+        'description' => 'A post type that adds value sections to the about page',
+        'public' => true,
+        'hierarchical' => true,
+        'show_ui' => true,
+        'show_in_menu' => true,
+        'show_in_nav_menus' => false,
+        'menu_position' => 8,
+        'menu_icon' => 'dashicons-heart',
+        'supports' => array(
+            'title',
+            'editor'
+        ),
+        'query_var' => true
+    );
+    register_post_type('aboutValues', $args);
+}
+
 // ----- ADD POST TYPES ------
 
 add_action('init','add_slideshow_post_type');
 add_action('init','add_testimonials_post_type');
 add_action('init','add_locations_post_type');
+add_action('init','add_aboutValues_post_type');
 
 // ----- REQUIREMENTS -----
 
