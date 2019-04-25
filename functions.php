@@ -94,7 +94,7 @@ function add_slideshow_post_type(){
         'show_ui' => true,
         'show_in_menu' => true,
         'show_in_nav_menus' => false,
-        'menu_position' => 5,
+        'menu_position' => 15,
         'menu_icon' => 'dashicons-images-alt2',
         'supports' => array(
             'title',
@@ -124,7 +124,7 @@ function add_testimonials_post_type(){
         'show_ui' => true,
         'show_in_menu' => true,
         'show_in_nav_menus' => false,
-        'menu_position' => 6,
+        'menu_position' => 20,
         'menu_icon' => 'dashicons-format-quote',
         'supports' => array(
             'title',
@@ -152,7 +152,7 @@ function add_locations_post_type(){
         'show_ui' => true,
         'show_in_menu' => true,
         'show_in_nav_menus' => false,
-        'menu_position' => 7,
+        'menu_position' => 21,
         'menu_icon' => 'dashicons-location',
         'supports' => array(
             'title',
@@ -181,7 +181,7 @@ function add_aboutValues_post_type(){
         'show_ui' => true,
         'show_in_menu' => true,
         'show_in_nav_menus' => false,
-        'menu_position' => 8,
+        'menu_position' => 20,
         'menu_icon' => 'dashicons-heart',
         'supports' => array(
             'title',
@@ -189,7 +189,35 @@ function add_aboutValues_post_type(){
         ),
         'query_var' => true
     );
-    register_post_type('aboutValues', $args);
+    register_post_type('aboutvalues', $args);
+}
+
+// ABOUT US: SUB VALUES
+
+function add_subValues_post_type(){
+    $labels = array(
+        'name' => _x('Sub Values', 'post type name', 'cmosTheme'),
+        'singular_name' => _x('Sub Value', 'post type singular name', 'cmosTheme'),
+        'add_new_item' => _x('Add sub value to the about page', 'Adding sub value to value section', 'cmosTheme')
+    );
+    
+    $args = array(
+        'labels' => $labels,
+        'description' => 'A post type that adds sub values under an About Us value.',
+        'public' => true,
+        'hierarchical' => true,
+        'show_ui' => true,
+        'show_in_menu' => true,
+        'show_in_nav_menus' => false,
+        'menu_position' => 20,
+        'menu_icon' => 'dashicons-excerpt-view',
+        'supports' => array(
+            'title',
+            'editor'
+        ),
+        'query_var' => true
+    );
+    register_post_type('subvalues', $args);
 }
 
 // ----- ADD POST TYPES ------
@@ -198,6 +226,7 @@ add_action('init','add_slideshow_post_type');
 add_action('init','add_testimonials_post_type');
 add_action('init','add_locations_post_type');
 add_action('init','add_aboutValues_post_type');
+add_action('init','add_subValues_post_type');
 
 // ----- REQUIREMENTS -----
 

@@ -34,7 +34,7 @@ $metaboxes = array(
     ),
     'aboutValue_cta' => array(
       'title' => __('Value CTA', 'cmosTheme'),
-      'applicableto' => 'aboutValues',
+      'applicableto' => 'aboutvalues',
       'location' => 'normal',
       'priority' => 'high',
       'fields' => array(
@@ -45,6 +45,30 @@ $metaboxes = array(
           'aboutValue_cta_text' => array(
               'title' => __('CTA Text: ', 'cmosTheme'),
               'type' => 'cta_text_text'
+          )
+      )
+    ),
+    'value_sections' => array(
+      'title' => __('Value section', 'cmosTheme'),
+      'applicableto' => 'subvalues',
+      'location' => 'normal',
+      'priority' => 'low',
+      'fields' => array(
+          'value_section' => array(
+              'title' => __('Select a main section to add this value to: ', 'cmosTheme'),
+              'type' => 'value_list'
+          )
+      )
+    ),
+    'subValue_icon' => array(
+      'title' => __('Value icon', 'cmosTheme'),
+      'applicableto' => 'subvalues',
+      'location' => 'normal',
+      'priority' => 'high',
+      'fields' => array(
+          'sub_value_icon' => array(
+              'title' => __('Add an icon that represents this value by copying the HTML of an icon from <a href="https://fontawesome.com/icons" target="_blank">Font Awesome</a>', 'cmosTheme'),
+              'type' => 'value_icon'
           )
       )
     )
@@ -64,7 +88,9 @@ function show_metaboxes( $post, $args ) {
     global $metaboxes;
     $custom = get_post_custom( $post->ID );
     $fields = $tabs = $metaboxes[$args['id']]['fields'];
+    
     $output = '<input type="hidden" name="post_format_meta_box_nonce" value="' . wp_create_nonce( basename( __FILE__ ) ) . '" />';
+    
     if ( sizeof( $fields ) ) {
         foreach ( $fields as $id => $field ) {
             switch ( $field['type'] ) {
@@ -72,22 +98,45 @@ function show_metaboxes( $post, $args ) {
                     $output .= '<div class="form-group"><label for="' . $id . '">' . $field['title'] . '</label><input class="customInput" id="' . $id . '" type="text" name="' . $id . '" value="' . $custom[$id][0] . '" style="width: 100%;" /></div>';
                 break;
                 case 'association_text':
-                $output .= '<div class="form-group"><label for="' . $id . '">' . $field['title'] . '</label><input class="customInput" id="' . $id . '" type="text" name="' . $id . '" value="' . $custom[$id][0] . '" style="width: 100%;" /></div>';
+                    $output .= '<div class="form-group"><label for="' . $id . '">' . $field['title'] . '</label><input class="customInput" id="' . $id . '" type="text" name="' . $id . '" value="' . $custom[$id][0] . '" style="width: 100%;" /></div>';
                 break;
                 case 'cta_link_text':
-                $output .= '<div class="form-group"><label for="' . $id . '">' . $field['title'] . '</label><input class="customInput" id="' . $id . '" type="text" name="' . $id . '" value="' . $custom[$id][0] . '" style="width: 100%;" /></div>';
+                    $output .= '<div class="form-group"><label for="' . $id . '">' . $field['title'] . '</label><input class="customInput" id="' . $id . '" type="text" name="' . $id . '" value="' . $custom[$id][0] . '" style="width: 100%;" /></div>';
                 break;
                 case 'cta_text_text':
-                $output .= '<div class="form-group"><label for="' . $id . '">' . $field['title'] . '</label><input class="customInput" id="' . $id . '" type="text" name="' . $id . '" value="' . $custom[$id][0] . '" style="width: 100%;" /></div>';
+                    $output .= '<div class="form-group"><label for="' . $id . '">' . $field['title'] . '</label><input class="customInput" id="' . $id . '" type="text" name="' . $id . '" value="' . $custom[$id][0] . '" style="width: 100%;" /></div>';
+                break;
+                case 'value_icon':
+                    $convertedValue = str_replace('"', "'", $custom[$id][0]);
+                    $output .= '<div class="form-group"><label for="' . $id . '">' . $field['title'] . '</label><input class="customInput" id="' . $id . '" type="text" name="' . $id . '" value="' . $convertedValue . '" style="width: 100%;" /></div>';
+                break;
+                case 'value_list':
+                    $args = array(
+                        'post_type' => 'aboutValues',
+                        'posts_per_page' => -1
+                    );
+                    $aboutValues = new WP_Query($args);
+                    if( $aboutValues->have_posts() ):
+                      $output .= '<label for="' . $id . '">' . $field['title'] . '</label><br>';
+                     while($aboutValues->have_posts()): $aboutValues->the_post();
+                         $postTitle = get_the_title();
+                          if($postTitle === $custom['value_section'][0]){
+                            $output .= '<input type="radio" name="' . $id . '" value="'.$postTitle.'" checked=checked> '. $postTitle .'<br>';
+                          } else{
+                            $output .= '<input type="radio" name="' . $id . '" value="'.$postTitle.'"> '. $postTitle .'<br>';
+                      }
+                 endwhile;
+                endif;
                 break;
                 default:
-                $output .= '<div class="form-group"><label for="' . $id . '">' . $field['title'] . '</label><input class="customInput" id="' . $id . '" type="text" name="' . $id . '" value="' . $custom[$id][0] . '" style="width: 100%;" /></div>';
+                    $output .= '<div class="form-group"><label for="' . $id . '">' . $field['title'] . '</label><input class="customInput" id="' . $id . '" type="text" name="' . $id . '" value="' . $custom[$id][0] . '" style="width: 100%;" /></div>';
                 break;
             }
         }
     }
     echo $output;
 }
+
 function save_metaboxes( $post_id ) {
     global $metaboxes;
     if ( ! wp_verify_nonce( $_POST['post_format_meta_box_nonce'], basename( __FILE__ ) ) )
