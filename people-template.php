@@ -20,6 +20,8 @@
 
 
 <?php get_header(); ?>
+<?php require 'includes/page-buffer.php'; ?>
+<?php require 'includes/banner.php'; ?>
     
     <div class="banner-image" style="background-image: url(images/CMOSPrint-41.jpg)">
         <div class="banner-text">
