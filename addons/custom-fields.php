@@ -71,6 +71,30 @@ $metaboxes = array(
               'type' => 'value_icon'
           )
       )
+    ),
+    'staff_role' => array(
+      'title' => __('Role', 'cmosTheme'),
+      'applicableto' => 'people',
+      'location' => 'normal',
+      'priority' => 'high',
+      'fields' => array(
+          'staff_role_field' => array(
+              'title' => __('Add person\'s role'),
+              'type' => 'role'
+          )
+      )
+    ),
+    'staff_email' => array(
+      'title' => __('Email', 'cmosTheme'),
+      'applicableto' => 'people',
+      'location' => 'normal',
+      'priority' => 'high',
+      'fields' => array(
+          'staff_email_field' => array(
+              'title' => __('Add person\'s email'),
+              'type' => 'email'
+          )
+      )
     )
 );
 
@@ -104,6 +128,12 @@ function show_metaboxes( $post, $args ) {
                     $output .= '<div class="form-group"><label for="' . $id . '">' . $field['title'] . '</label><input class="customInput" id="' . $id . '" type="text" name="' . $id . '" value="' . $custom[$id][0] . '" style="width: 100%;" /></div>';
                 break;
                 case 'cta_text_text':
+                    $output .= '<div class="form-group"><label for="' . $id . '">' . $field['title'] . '</label><input class="customInput" id="' . $id . '" type="text" name="' . $id . '" value="' . $custom[$id][0] . '" style="width: 100%;" /></div>';
+                break;
+                case 'role':
+                    $output .= '<div class="form-group"><label for="' . $id . '">' . $field['title'] . '</label><input class="customInput" id="' . $id . '" type="text" name="' . $id . '" value="' . $custom[$id][0] . '" style="width: 100%;" /></div>';
+                break;
+                case 'email':
                     $output .= '<div class="form-group"><label for="' . $id . '">' . $field['title'] . '</label><input class="customInput" id="' . $id . '" type="text" name="' . $id . '" value="' . $custom[$id][0] . '" style="width: 100%;" /></div>';
                 break;
                 case 'value_icon':

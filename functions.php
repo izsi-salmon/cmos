@@ -20,6 +20,7 @@ add_action('wp_enqueue_scripts', 'addCustomThemeStyles');
 // Post thumbnails
 add_theme_support('post-thumbnails');
 add_theme_support( 'custom-header' );
+add_image_size( 'avatar', 300, 300, true );
 
 // Custom logo
 function addCustomLogo() {
@@ -220,6 +221,36 @@ function add_subValues_post_type(){
     register_post_type('subvalues', $args);
 }
 
+// People
+
+function add_people_post_type(){
+    $labels = array(
+        'name' => _x('People', 'post type name', 'cmosTheme'),
+        'singular_name' => _x('Person', 'post type singular name', 'cmosTheme'),
+        'add_new_item' => _x('Add person to People page', 'Adding person', 'cmosTheme')
+    );
+    
+    $args = array(
+        'labels' => $labels,
+        'description' => 'A post type that adds staff members to the people page',
+        'public' => true,
+        'hierarchical' => true,
+        'show_ui' => true,
+        'show_in_menu' => true,
+        'show_in_nav_menus' => false,
+        'menu_position' => 22,
+        'menu_icon' => 'dashicons-admin-users',
+        'supports' => array(
+            'title',
+            'thumbnail',
+            'page-attributes'
+            
+        ),
+        'query_var' => true
+    );
+    register_post_type('people', $args);
+}
+
 // ----- ADD POST TYPES ------
 
 add_action('init','add_slideshow_post_type');
@@ -227,6 +258,7 @@ add_action('init','add_testimonials_post_type');
 add_action('init','add_locations_post_type');
 add_action('init','add_aboutValues_post_type');
 add_action('init','add_subValues_post_type');
+add_action('init','add_people_post_type');
 
 // ----- REQUIREMENTS -----
 

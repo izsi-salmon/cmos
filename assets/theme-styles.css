@@ -1307,7 +1307,7 @@ a.value-cta{
     /* PEOPLE */
     
     .people-container{
-        justify-content: space-between;
+        justify-content: center;
     }
     
 }
