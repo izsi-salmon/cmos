@@ -6,18 +6,22 @@
 */
 
 ?>
+ 
+<?php 
+    $id= get_the_id();
+    $post = get_post($id); 
+    $content = apply_filters('the_content', $post->post_content); 
+    $h2 = substr($content, 0, strpos($content, '</h2>') );
+    $allParags = explode("</h2>", $content);
+    unset($allParags[0]);
+    $parag = implode($allParags);
+    $heading = strip_tags($h2);
 
+?>
   
 <?php get_header(); ?>
-    
-    <div class="banner-image" style="background-image: url(images/CMOSPrint-31.jpg)">
-        <div class="banner-text">
-            <h1 class="banner-title">
-                Careers
-                <div class="underline-green underline-50 underline-centered"></div>
-            </h1>
-        </div>
-    </div>
+<?php require 'includes/page-buffer.php'; ?>
+<?php require 'includes/banner.php'; ?>
     
     <div class="section section-careers-blurb">
         <div class="careers-title">Why do our employees smile so much?</div>

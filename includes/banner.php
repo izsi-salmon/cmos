@@ -1,9 +1,5 @@
-<?php 
-    $bannerImage = get_header_image();
-?>
-
-<?php  if($bannerImage): ?>
-   <div class="banner-image" style="background-image: url(<?php echo esc_url($bannerImage) ?>)">
+<?php  if(has_post_thumbnail()): ?>
+   <div class="banner-image" style="background-image: url(<?php echo esc_url(get_the_post_thumbnail_url()) ?>)">
         <div class="banner-text">
             <h1 class="banner-title">
                 <?php the_title() ?>

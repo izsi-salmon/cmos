@@ -95,6 +95,18 @@ $metaboxes = array(
               'type' => 'email'
           )
       )
+    ),
+    'service_pages' => array(
+      'title' => __('Service Page', 'cmosTheme'),
+      'applicableto' => 'subservices',
+      'location' => 'normal',
+      'priority' => 'high',
+      'fields' => array(
+          'service_page' => array(
+              'title' => __('Select a main service to add this to: ', 'cmosTheme'),
+              'type' => 'service_list'
+          )
+      )
     )
 );
 
@@ -151,6 +163,31 @@ function show_metaboxes( $post, $args ) {
                      while($aboutValues->have_posts()): $aboutValues->the_post();
                          $postTitle = get_the_title();
                           if($postTitle === $custom['value_section'][0]){
+                            $output .= '<input type="radio" name="' . $id . '" value="'.$postTitle.'" checked=checked> '. $postTitle .'<br>';
+                          } else{
+                            $output .= '<input type="radio" name="' . $id . '" value="'.$postTitle.'"> '. $postTitle .'<br>';
+                      }
+                 endwhile;
+                endif;
+                break;
+                case 'service_list':
+                    $args = array(
+                        'post_type' => 'page',
+                        'posts_per_page' => -1,
+                        'meta_query' => array(
+                            array(
+                            'key' => '_wp_page_template',
+                            'value' => 'service-template.php'
+                            )
+                        )
+                    );
+                    $servicepages = new WP_Query( $args );
+                    
+                    if( $servicepages->have_posts() ):
+                      $output .= '<label for="' . $id . '">' . $field['title'] . '</label><br>';
+                     while($servicepages->have_posts()): $servicepages->the_post();
+                         $postTitle = get_the_title();
+                          if($postTitle === $custom['service_page'][0]){
                             $output .= '<input type="radio" name="' . $id . '" value="'.$postTitle.'" checked=checked> '. $postTitle .'<br>';
                           } else{
                             $output .= '<input type="radio" name="' . $id . '" value="'.$postTitle.'"> '. $postTitle .'<br>';

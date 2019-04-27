@@ -19,7 +19,6 @@ add_action('wp_enqueue_scripts', 'addCustomThemeStyles');
 
 // Post thumbnails
 add_theme_support('post-thumbnails');
-add_theme_support( 'custom-header' );
 add_image_size( 'avatar', 300, 300, true );
 
 // Custom logo
@@ -165,6 +164,34 @@ function add_locations_post_type(){
     register_post_type('locations', $args);
 }
 
+// SUB SERVICES
+
+function add_subservices_post_type(){
+    $labels = array(
+        'name' => _x('Sub Services', 'post type name', 'cmosTheme'),
+        'singular_name' => _x('Sub Service', 'post type singular name', 'cmosTheme'),
+        'add_new_item' => _x('Add sub service to service page', 'Adding sub service', 'cmosTheme')
+    );
+    
+    $args = array(
+        'labels' => $labels,
+        'description' => 'Post type that adds sub service to service page',
+        'public' => true,
+        'hierarchical' => true,
+        'show_ui' => true,
+        'show_in_menu' => true,
+        'show_in_nav_menus' => false,
+        'menu_position' => 21,
+        'menu_icon' => 'dashicons-editor-ul',
+        'supports' => array(
+            'title',
+            'thumbnail'
+        ),
+        'query_var' => true
+    );
+    register_post_type('subservices', $args);
+}
+
 // ABOUT US: VALUES
 
 function add_aboutValues_post_type(){
@@ -259,15 +286,12 @@ add_action('init','add_locations_post_type');
 add_action('init','add_aboutValues_post_type');
 add_action('init','add_subValues_post_type');
 add_action('init','add_people_post_type');
+add_action('init','add_subservices_post_type');
 
 // ----- REQUIREMENTS -----
 
 require get_parent_theme_file_path('/addons/custom-customizer.php');
 require get_parent_theme_file_path('/addons/custom-fields.php');
-
-
-
-
 
 
 

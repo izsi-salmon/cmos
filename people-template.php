@@ -18,19 +18,9 @@
 
 ?>
 
-
 <?php get_header(); ?>
 <?php require 'includes/page-buffer.php'; ?>
 <?php require 'includes/banner.php'; ?>
-    
-    <div class="banner-image" style="background-image: url(images/CMOSPrint-41.jpg)">
-        <div class="banner-text">
-            <h1 class="banner-title">
-                People
-                <div class="underline-green underline-50 underline-centered"></div>
-            </h1>
-        </div>
-    </div>
     
     <?php if($people->have_posts()): ?>
         <div class="section section-people">

@@ -22,10 +22,10 @@
         );
     $aboutvalues = new WP_Query($aboutvaluesArgs);
     
-    $subvaluesArgs = array(
-        'post_type' => 'subvalues'
-        );
-    $subvalues = new WP_Query($subvaluesArgs);
+//    $subvaluesArgs = array(
+//        'post_type' => 'subvalues'
+//        );
+//    $subvalues = new WP_Query($subvaluesArgs);
 
 ?>
 
@@ -70,11 +70,23 @@
             <?php while($aboutvalues->have_posts()): $aboutvalues->the_post(); ?>
                
             <?php
-                  $postID = get_the_id();
-                  $valueTitle = get_the_title();
-                  $ctaLink = get_post_meta($postID, 'aboutValue_cta_link', true);
-                  $ctaText = get_post_meta($postID, 'aboutValue_cta_text', true);
+                $postID = get_the_id();
+                $valueTitle = get_the_title();
+                $ctaLink = get_post_meta($postID, 'aboutValue_cta_link', true);
+                $ctaText = get_post_meta($postID, 'aboutValue_cta_text', true);
+
+                $subvaluesArgs = array(
+                    'post_type' => 'subvalues',
+                    'meta_query' => array(
+                        array(
+                            'key' => 'value_section',
+                            'value' => $valueTitle
+                            )
+                        )
+                    );
+                $subvalues = new WP_Query($subvaluesArgs);
             ?>
+            
                <div class="underline-grey separator"></div>
                
                 <div class="section-value">
@@ -96,24 +108,16 @@
                                       $valueSection = get_post_meta($postID, 'value_section', true);
                                       
                                 ?>
-                                
-                                
-                                
-                                <?php if($valueTitle == $valueSection): ?>
 
-                                        <div class="value-card">
-                                            <div class="value-icon"><?= $valueIcon ?> </div>
-                                            <div class="value-text">
-                                                <?php if( ! empty( $post->post_title ) ) : ?>
-                                                    <div class="value-title"><?php the_title(); ?></div>
-                                                <?php endif; ?>
-                                                <p class="value-parag"><?php the_content(); ?></p>
-                                            </div>
-                                        </div>
-                                
-                                <?php endif; ?>
-                                
-                                
+                                <div class="value-card">
+                                    <div class="value-icon"><?= $valueIcon ?> </div>
+                                    <div class="value-text">
+                                        <?php if( ! empty( $post->post_title ) ) : ?>
+                                            <div class="value-title"><?php the_title(); ?></div>
+                                        <?php endif; ?>
+                                        <p class="value-parag"><?php the_content(); ?></p>
+                                    </div>
+                                </div>
 
                             <?php endwhile; ?>
                             </div>
