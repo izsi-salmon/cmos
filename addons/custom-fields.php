@@ -2,8 +2,8 @@
 
 function admin_my_enqueue() {
     wp_enqueue_media();
-    wp_enqueue_style('CustomFieldStyle', get_template_directory_uri() . './assets/css/custom-fields-styles.css', array(), '1.0.0', 'all');
-    wp_enqueue_script('CustomFieldScript', get_template_directory_uri() . './assets/js/custom-fields-script.js', array(), '1.0.0', true);
+    wp_enqueue_style('CustomFieldStyle', get_template_directory_uri() . './assets/custom-fields-styles.css', array(), '1.0.0', 'all');
+    wp_enqueue_script('CustomFieldScript', get_template_directory_uri() . './assets/custom-fields-script.js', array(), '1.0.0', true);
 }
 add_action('admin_enqueue_scripts', 'admin_my_enqueue');
 
@@ -107,6 +107,19 @@ $metaboxes = array(
               'type' => 'service_list'
           )
       )
+    ),
+    'about_image' => array(
+        'title' => __('Upload image', 'cmosTheme'),
+        'applicableto' => 'page',
+        'location' => 'normal',
+        'priority' => 'high',
+        'fields' => array(
+            'custom_image' => array(
+                'title' => __('Upload image: ', 'cmosTheme'),
+                'description' => 'Add an image to the about us blurb.',
+                'type' => 'image'
+            )
+        )
     )
 );
 
@@ -122,6 +135,12 @@ add_action( 'admin_init', 'add_post_format_metabox' );
 
 function show_metaboxes( $post, $args ) {
     global $metaboxes;
+//    if ( get_post_meta( $post->ID, '_wp_page_template', true != 'about-template.php' ) ) {
+//        echo('hello');
+//        unset($metaboxes['about_image']);
+//        var_dump($metaboxes);
+//        die($metaboxes);
+//    }
     $custom = get_post_custom( $post->ID );
     $fields = $tabs = $metaboxes[$args['id']]['fields'];
     
@@ -194,6 +213,28 @@ function show_metaboxes( $post, $args ) {
                       }
                  endwhile;
                 endif;
+                break;
+                case 'image':
+                    global $post;
+                    if ( 'about-template.php' == get_post_meta( $post->ID, '_wp_page_template', true ) ) {
+                        $image =  get_post_meta( $post->ID, $id, true );
+                        if($image){
+                            $imagesrc = wp_get_attachment_image_url($image, 'header_image', false);
+                            $removeClasses = "remove_custom_images button";
+                        } else{
+                            $removeClasses = "remove_custom_images button hidden";
+                        }
+                        $output .= '<div class="image-form-group">';
+                        $output .= '<label for="'.$id.'" class="customLabel">'.$field['title'].'</label><br>';
+                        $output .= '<p>'.$field['description'].'</p><br>';
+                        $output .= '<img class="custom_image" src="'.$imagesrc.'">';
+                        $output .= '<input type="hidden" value="' . $custom[$id][0] . '" class="customInput regular-text process_custom_images" name="'.$id.'" max="" min="1" step="1" readonly style="display:block">';
+                        $output .= '<button class="set_custom_images button">Add Image</button>';
+                        $output .= '<button class="'.$removeClasses.'">Remove Image</button>';
+                        $output .= '</div>';
+                    } else {
+                        $output .= 'No custom image available on this page.';
+                    }
                 break;
                 default:
                     $output .= '<div class="form-group"><label for="' . $id . '">' . $field['title'] . '</label><input class="customInput" id="' . $id . '" type="text" name="' . $id . '" value="' . $custom[$id][0] . '" style="width: 100%;" /></div>';

@@ -29,6 +29,16 @@ function custom_theme_customizer( $wp_customize ){
         'panel' => 'adtnl_ctas'
     ));
     
+    $wp_customize->add_section('career_cta', array(
+        'title' => __('Career CTA', 'cmosTheme'),
+        'panel' => 'adtnl_ctas'
+    ));
+    
+    $wp_customize->add_section('contact_cta', array(
+        'title' => __('Contact CTA', 'cmosTheme'),
+        'panel' => 'adtnl_ctas'
+    ));
+    
     $wp_customize->add_section('footer_content', array(
         'title' => __('Footer Content', 'cmosTheme')
     ));
@@ -266,6 +276,90 @@ function custom_theme_customizer( $wp_customize ){
         )
     );
     
+    // CAREERS CTA
+    
+    // Career CTA Text
+    $wp_customize->add_setting('career_cta_text_setting', array(
+            'default' => '',
+            'transport' => 'refresh',
+            'sanitize_callback' => 'sanitize_careerCTAText'
+    ));
+    
+    $wp_customize->add_control(
+        new WP_Customize_Control(
+            $wp_customize,
+            'career_cta_text_control',
+            array(
+                'label' => __('CTA text', 'cmosTheme'),
+                'section' => 'career_cta',
+                'settings' => 'career_cta_text_setting',
+                'type' => 'text'
+            )
+        )
+    );
+    
+    // Career CTA Link
+    $wp_customize->add_setting('career_cta_link_setting', array(
+            'default' => '',
+            'transport' => 'refresh'
+    ));
+    
+    $wp_customize->add_control(
+        new WP_Customize_Control(
+            $wp_customize,
+            'career_cta_link_control',
+            array(
+                'label' => __('CTA Link', 'cmosTheme'),
+                'description' => 'Add the full url to a page, eg: '.get_site_url().'/contact',
+                'section' => 'career_cta',
+                'settings' => 'career_cta_link_setting',
+                'type' => 'text'
+            )
+        )
+    );
+    
+    // CONTACT CTA
+    
+    // Contact CTA Text
+    $wp_customize->add_setting('contact_cta_text_setting', array(
+            'default' => '',
+            'transport' => 'refresh'
+    ));
+    
+    $wp_customize->add_control(
+        new WP_Customize_Control(
+            $wp_customize,
+            'contact_cta_text_control',
+            array(
+                'label' => __('CTA text', 'cmosTheme'),
+                'description' => 'Add an icon to the text with <a href="https://fontawesome.com/icons" target="_blank"> Font Awesome </a> by copying an icon\'s HTML.',
+                'section' => 'contact_cta',
+                'settings' => 'contact_cta_text_setting',
+                'type' => 'text'
+            )
+        )
+    );
+    
+    // Contact CTA Link
+    $wp_customize->add_setting('contact_cta_link_setting', array(
+            'default' => '',
+            'transport' => 'refresh'
+    ));
+    
+    $wp_customize->add_control(
+        new WP_Customize_Control(
+            $wp_customize,
+            'contact_cta_link_control',
+            array(
+                'label' => __('CTA Link', 'cmosTheme'),
+                'description' => 'Add the full url to a page, eg: '.get_site_url().'/contact',
+                'section' => 'contact_cta',
+                'settings' => 'contact_cta_link_setting',
+                'type' => 'text'
+            )
+        )
+    );
+    
     // ----- FOOTER CONTENT -----
     
     // Phone button text
@@ -352,6 +446,11 @@ function custom_theme_customizer( $wp_customize ){
     // About CTA tagline
     function sanitize_aboutCTATagline($aboutCTATagline){
         return sanitize_text_field( $aboutCTATagline);
+    }
+    
+    // Career CTA text
+    function sanitize_careerCTAText($careerCTAText){
+        return sanitize_text_field( $careerCTAText );
     }
     
 }

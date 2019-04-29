@@ -6,6 +6,17 @@
 */
 
 ?>
+ 
+ <?php
+
+    $locationsArgs = array(
+        'post_type' => 'locations',
+        'order' => 'ASC',
+        'orderby' => 'menu_order'
+        );
+    $locations = new WP_Query($locationsArgs);
+
+?>
   
 <?php get_header(); ?>
 <?php require 'includes/page-buffer.php'; ?>
@@ -15,30 +26,37 @@
         <div class="contact-container">
             
             <div class="contact-collumn">
-                <div class="phone-flex">
-                    <i class="fas fa-phone"></i>
-                    <span>0800 002 557</span>
-                </div>
-                <div class="contact-locations">
-
-                    <div class="contact-location">
-                        <h3>Auckland</h3>
-                        <p>51 Randolph Street</p>
-                        <p>Eden Terrace</p>
-                        <p>Auckland 1010</p>
+               <?php if( get_theme_mod( 'phone_button_text_setting') != ""): ?>
+                   <div class="phone-flex">
+                       <?php if( get_theme_mod( 'phone_button_icon_setting')): ?>
+                           <?php echo get_theme_mod( 'phone_button_icon_setting'); ?>
+                       <?php endif; ?>
+                        <span><?php echo get_theme_mod( 'phone_button_text_setting'); ?></span>
                     </div>
-
-                    <div class="contact-location">
-                        <h3>Wellington</h3>
-                        <p>16 Kaiwharawhara Road</p>
-                        <p>Kaiwharawhaura</p>
-                        <p>Wellington 6035</p>
+               <?php endif; ?>
+                
+                <?php if($locations->have_posts()): ?>
+                    <div class="contact-locations">
+                        <?php while($locations->have_posts()): $locations->the_post(); ?>
+                            <div class="contact-location">
+                                <h3><?php the_title() ?></h3>
+                                <?php the_content() ?>
+                            </div>
+                        <?php endwhile; ?>
                     </div>
+                <?php endif; ?>
+                
+                <?php if( get_theme_mod( 'contact_cta_link_setting') != ""): ?>
+                    <a href="<?= get_theme_mod( 'contact_cta_link_setting') ?>" class="page-cta" target="_blank">
+                        <?php if( get_theme_mod( 'contact_cta_text_setting')): ?>
+                           <?= get_theme_mod( 'contact_cta_text_setting'); ?>
+                       <?php else: ?>
+                           <?= get_theme_mod( 'contact_cta_link_setting') ?>
+                       <?php endif; ?>
+                    </a>
+               <?php endif; ?>
 
-                </div>
-
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSf0fjG7hembg2EDP7VWCeyivzJi5FpwCdBIkT4Sj9K8FOlMzQ/viewform" target="_blank" class="page-cta">Apply for work <i class="fas fa-chevron-right"></i></a>
-            </div>
+             </div>
             
             <div class="contact-collumn">
                 <h2 class="form-title">Get a Free Quote:</h2>

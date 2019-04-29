@@ -286,8 +286,9 @@ html{
 
 .section-title{
     font-family: 'Roboto Condensed', sans-serif;
-    margin: 1em 2em;
+    margin: 2.5em auto 1em auto;
     text-transform: uppercase;
+    width: 90%;
 }
 
 .section{
@@ -626,7 +627,7 @@ a.value-cta{
 /* CONTACT */
 
 .contact-section{
-    margin: auto;
+    margin: 0 auto 2em auto;
     width: 90%;
 }
 
@@ -723,7 +724,7 @@ a.value-cta{
 .footer{
     background-color: #404040;
     color: #FFF;
-    padding: 1.5em;
+    padding: 1em;
 }
 
 .contact-buttons{
@@ -1065,6 +1066,10 @@ a.value-cta{
         min-height: 20em;
     }
     
+    .section-title{
+        font-size: 2.5em;
+    }
+    
     /* ^ PAGE FEATURES */
     
     /* SERVICE MENU */
@@ -1114,6 +1119,19 @@ a.value-cta{
         margin: 0 auto;
         max-width: 200px;
 /*        text-align: left;*/
+    }
+    
+    /* ABOUT */
+    
+    .about-image{
+        margin: 3em auto 0 auto;
+        max-width: 600px;
+    }
+    
+    /* CONTACT */
+    
+    .contact-section{
+        margin-bottom: 3em;
     }
     
     /* FOOTER */
@@ -1228,27 +1246,6 @@ a.value-cta{
     /* ^ PAGE FEATURES*/
     
     /* ABOUT */
-    
-    .about-blurb-container{
-        display: flex;
-            justify-content: space-between;
-        margin-top: 1em;
-        width: 70%;
-    }
-    
-    .about-text{
-        width: 45%;
-        
-    }
-    
-    .about-image{
-        text-align: right;
-        width: 50%;
-    }
-    
-    .about-image img{
-        max-width: 800px;
-    }
     
     .section-value{
         margin: 3em auto;
@@ -1508,6 +1505,28 @@ a.value-cta{
     
     .sub-services-container{
         width: 65%;
+    }
+    
+    /* ABOUT */
+    
+    .about-blurb-container{
+        display: flex;
+            justify-content: space-between;
+            align-items: center;
+        margin-top: 1em;
+        width: 70%;
+    }
+    
+    .about-text{
+        width: 45%;
+        
+    }
+    
+    .about-image{
+        margin: 0;
+        max-width: none;
+        text-align: right;
+        width: 50%;
     }
     
     /* CAREERS */

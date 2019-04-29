@@ -224,7 +224,7 @@ function add_aboutValues_post_type(){
 
 function add_subValues_post_type(){
     $labels = array(
-        'name' => _x('Sub Values', 'post type name', 'cmosTheme'),
+        'name' => _x('About us: Sub Values', 'post type name', 'cmosTheme'),
         'singular_name' => _x('Sub Value', 'post type singular name', 'cmosTheme'),
         'add_new_item' => _x('Add sub value to the about page', 'Adding sub value to value section', 'cmosTheme')
     );
@@ -278,6 +278,35 @@ function add_people_post_type(){
     register_post_type('people', $args);
 }
 
+// CAREER VALUES
+
+function add_careervalues_post_type(){
+    $labels = array(
+        'name' => _x('Careers: Values', 'post type name', 'cmosTheme'),
+        'singular_name' => _x('Career Value', 'post type singular name', 'cmosTheme'),
+        'add_new_item' => _x('Add value to career page', 'Adding career value', 'cmosTheme')
+    );
+    
+    $args = array(
+        'labels' => $labels,
+        'description' => 'A post type that adds values to the careers page.',
+        'public' => true,
+        'hierarchical' => true,
+        'show_ui' => true,
+        'show_in_menu' => true,
+        'show_in_nav_menus' => false,
+        'menu_position' => 23,
+        'menu_icon' => 'dashicons-heart',
+        'supports' => array(
+            'title',
+            'editor',
+            'page-attributes'
+        ),
+        'query_var' => true
+    );
+    register_post_type('careervalues', $args);
+}
+
 // ----- ADD POST TYPES ------
 
 add_action('init','add_slideshow_post_type');
@@ -287,6 +316,7 @@ add_action('init','add_aboutValues_post_type');
 add_action('init','add_subValues_post_type');
 add_action('init','add_people_post_type');
 add_action('init','add_subservices_post_type');
+add_action('init','add_careervalues_post_type');
 
 // ----- REQUIREMENTS -----
 

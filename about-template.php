@@ -21,11 +21,6 @@
         'post_type' => 'aboutvalues'
         );
     $aboutvalues = new WP_Query($aboutvaluesArgs);
-    
-//    $subvaluesArgs = array(
-//        'post_type' => 'subvalues'
-//        );
-//    $subvalues = new WP_Query($subvaluesArgs);
 
 ?>
 
@@ -58,9 +53,19 @@
                <?php endif; ?>
             </div>
             
-            <div class="about-image">
-<!--                <img src="images/CMOSPrint-16.jpg" alt="">-->
-            </div>
+            <?php
+
+                $postID = get_the_id();
+                $customImageID = get_post_meta($postID, 'custom_image', true);
+                $customImageURL = wp_get_attachment_image_url($customImageID, 'full', false);
+
+            ?>
+            
+            <?php if($customImageURL): ?>
+                <div class="about-image">
+                    <img src="<?= $customImageURL ?>">
+                </div>
+            <?php endif ?>
             
         </div>
     </div>
