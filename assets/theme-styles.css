@@ -286,7 +286,7 @@ html{
 
 .section-title{
     font-family: 'Roboto Condensed', sans-serif;
-    margin: 2.5em auto 1em auto;
+    margin: 1em auto 1em auto;
     text-transform: uppercase;
     width: 90%;
 }
@@ -1068,6 +1068,7 @@ a.value-cta{
     
     .section-title{
         font-size: 2.5em;
+        width: 80%;
     }
     
     /* ^ PAGE FEATURES */
@@ -1273,6 +1274,7 @@ a.value-cta{
     .section-title{
         font-size: 3em;
         margin-bottom: 1em;
+        width: 90%;
     }
     
     .contact-container{
@@ -1346,7 +1348,25 @@ a.value-cta{
         margin: 0 1em;
         text-decoration: none;
     }
+    
+/*
+    .menu-item-has-children{
+        height: 4em;
+        float: left;
+    }
+*/
 
+    .nav ul li ul:before{
+        content: "";
+        position: absolute; 
+        top: -2em;
+        left: 0;
+        height: 2em;
+        width: 100%;
+        z-index: 1010;
+        background-color: rgba(255, 255, 0, 0);
+    }
+    
     .nav ul li ul{
         background-color: #383838;
         border-bottom: 0px;
@@ -1357,7 +1377,7 @@ a.value-cta{
         margin-bottom: 0;
         margin-top: 1.7em;
             max-height: 0;
-        position: absolute;        
+        position: absolute;
         overflow: hidden;
         transition: max-height 0.3s;
         z-index: 5;

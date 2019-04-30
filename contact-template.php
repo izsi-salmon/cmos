@@ -18,7 +18,7 @@
 
 ?>
   
-<?php get_header(); ?>
+<?php get_header('contact'); ?>
 <?php require 'includes/page-buffer.php'; ?>
 <?php require 'includes/banner.php'; ?>
     
@@ -40,7 +40,13 @@
                         <?php while($locations->have_posts()): $locations->the_post(); ?>
                             <div class="contact-location">
                                 <h3><?php the_title() ?></h3>
-                                <?php the_content() ?>
+                                <?php 
+                                    $thecontent = get_the_content();
+                                    $addressLines = explode(",", $thecontent);
+                                ?>
+                                <?php foreach($addressLines as $addressLine): ?>
+                                    <p><?= $addressLine ?></p>
+                                <?php endforeach; ?>
                             </div>
                         <?php endwhile; ?>
                     </div>

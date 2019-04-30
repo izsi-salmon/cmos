@@ -89,17 +89,17 @@ hamburgerButton.addEventListener('click', toggleMenu, false);
 
 dropshadow.addEventListener('click', toggleMenu, false);
 
-// Function controlling drop-down services menu (desktop only)
+// Functions controlling drop-down services menu (desktop only)
 
+// Function that finds/loops dropdown event listeners
 var setDropdownEventListeners = function(){
     for (i = 0; i < dropdownButton.length; i++) { 
-        
         addEventListeners(i);
-        
     }
     
 }();
 
+// Function that sets event listeners
 function addEventListeners(n){
         
 //        dropdownButton[n].addEventListener("click", function(event){
@@ -115,17 +115,20 @@ function addEventListeners(n){
               dropdownContent[n].style.maxHeight = null;
           }
         });
-        
 }
 
 function openDropdown(n){
     dropdownContent[n].style.maxHeight = dropdownContent[n].scrollHeight + 'px';
+//    setTimeout(function(){ dropdownContent[n].style.overflow = 'visible'; }, 300);
+    
+    
+    
 //    dropdownButton[n].addEventListener('mouseleave', function(){closeDropdown(n)}, false);
 }
 
-function closeDropdown(n){
-    setTimeout(function(){ dropdownContent[n].style.maxHeight = null; }, 1000);
-}
+//function closeDropdown(n){
+//    setTimeout(function(){ dropdownContent[n].style.maxHeight = null; }, 1000);
+//}
 
 //function toggleDropdown(n){
 //    if(dropdownContent[n].style.maxHeight){
