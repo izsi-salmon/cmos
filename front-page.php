@@ -19,7 +19,7 @@
 
 ?>
 <?php if($slides->have_posts()): ?>
-    <div class="swiper-container swiper1">
+    <div class="swiper-container swiper-container-header swiper1">
         <div class="swiper-wrapper">
         <?php while($slides->have_posts()): $slides->the_post(); ?>
             <?php if(has_post_thumbnail() ): ?>
@@ -87,6 +87,54 @@
 
 <?php if($testimonials->have_posts()): ?>
     <div class="section testimonial-section">
+           <div class="testimonial-heading-wrapper">
+               <h2 class="testimonial-heading">
+                   What our clients say
+                   <div class="underline-grey underline-60 underline-wrap"></div>
+               </h2>
+           </div>
+
+        <div class="swiper-container swiper2">
+            <div class="swiper-wrapper">
+               
+                <?php while($testimonials->have_posts()): $testimonials->the_post(); ?>
+
+                <?php
+                  $postID = get_the_id();
+                  $association = get_post_meta($postID, 'client_association', true);
+                  $heading = get_post_meta($postID, 'testimonial_heading', true);
+                ?>
+                    <div class="swiper-slide swiper2-slide">
+                        <div class="testimonial-content">
+                            <?php if($heading): ?>
+                                <div class="testimonial-title">
+                                    <?= $heading ?>
+                                </div>
+                            <?php endif; ?>
+                            <div class="testimonial-parag">
+                                <p><?php the_content() ?></p>
+                            </div>
+                            <div class="testimonial-sign">
+                                <h5><?php the_title() ?></h5>
+                                <?php if($association): ?>
+                                    <p><?= $association ?></p>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <?php endwhile; ?>
+                
+            </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+        </div>
+    </div>
+<?php endif; ?>
+
+<!--
+<?php if($testimonials->have_posts()): ?>
+    <div class="section testimonial-section">
        <div class="testimonial-heading-wrapper">
            <h2 class="testimonial-heading">
                What our clients say
@@ -126,6 +174,7 @@
         </div>
     </div>
 <?php endif; ?>
+-->
 
 
 <?php get_footer(); ?>
