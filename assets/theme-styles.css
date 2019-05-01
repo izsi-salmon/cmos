@@ -28,11 +28,15 @@ html{
 
 .header{
     background-color: #383838;
+    box-sizing: border-box;
     display: flex;
         justify-content: space-between;
         align-items: center;
+/*    margin-bottom: 52px;*/
     padding: 0.5em 2em;
-    position: relative;
+    position: fixed;
+        top: 0;
+    width: 100%;
     z-index: 1000;
 }
 
@@ -839,21 +843,6 @@ a.value-cta{
 .footer-bar ul li a{
     color: inherit;
     text-decoration: none;
-}
-
-
-/* STICKY STUFF */
-
-.sticky-header{
-    box-sizing: border-box;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    
-}
-
-.swiper-container-sticky{
-    margin-top: 197px;
 }
 
 @media only screen and (min-width: 375px){
