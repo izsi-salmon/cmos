@@ -87,12 +87,14 @@
 
 <?php if($testimonials->have_posts()): ?>
     <div class="section testimonial-section">
-           <div class="testimonial-heading-wrapper">
+          <?php if( get_theme_mod( 'testimonial_heading_setting') != "" ): ?>
+            <div class="testimonial-heading-wrapper">
                <h2 class="testimonial-heading">
                    What our clients say
                    <div class="underline-grey underline-60 underline-wrap"></div>
                </h2>
            </div>
+        <?php endif; ?>
 
         <div class="swiper-container swiper2">
             <div class="swiper-wrapper">

@@ -257,6 +257,10 @@ html{
 
 /* PAGE FEATURES */
 
+#pageBuffer{
+    transition: height 0.3s;
+}
+
 .banner-image{
     background-position: center;
     background-size: cover;
@@ -411,6 +415,19 @@ a.service-menu-item{
 
 /* TESTIMONIALS */
 
+.testimonial-section{
+    background-color: #EBEBEB;
+}
+
+.testimonial-heading-wrapper{
+    margin: 0 auto;
+    width: 90%;
+}
+
+.testimonial-heading{
+    display: inline-block;
+}
+
 .swiper2{
     margin: 0 auto;
     width: 80%;
@@ -426,19 +443,6 @@ a.service-menu-item{
 
 .swiper-pagination-bullet{
     background-color: #555;
-}
-
-.testimonial-section{
-    background-color: #EBEBEB;
-}
-
-.testimonial-heading-wrapper{
-    margin: 0 auto;
-    width: 90%;
-}
-
-.testimonial-heading{
-    display: inline-block;
 }
 
 .testimonial-box{
@@ -1115,7 +1119,8 @@ a.value-cta{
         display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
-       width: 70%;
+        margin: 0 auto 2em auto;
+        width: 70%;
     }
     
     .sub-service{

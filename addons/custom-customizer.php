@@ -9,7 +9,7 @@ function custom_theme_customizer( $wp_customize ){
     ) );
     
     $wp_customize->add_panel( 'adtnl_ctas', array(
-      'title' => __( 'Additioinal CTA\'s' ),
+      'title' => __( 'Additional CTA\'s' ),
       'description' => $description,
       'priority' => 160
     ) );
@@ -21,6 +21,11 @@ function custom_theme_customizer( $wp_customize ){
     
     $wp_customize->add_section('homepage_links', array(
         'title' => __('Services menu', 'cmosTheme'),
+        'panel' => 'custom_homepage_content'
+    ));
+    
+    $wp_customize->add_section('homepage_testimonials', array(
+        'title' => __('Testimonial section', 'cmosTheme'),
         'panel' => 'custom_homepage_content'
     ));
     
@@ -206,6 +211,27 @@ function custom_theme_customizer( $wp_customize ){
                 'description' => 'Add an icon to this service with <a href="https://fontawesome.com/icons" target="_blank"> Font Awesome </a> by copying an icon\'s HTML.',
                 'section' => 'homepage_links',
                 'settings' => 'service_2_icon_setting',
+                'type' => 'text'
+            )
+        )
+    );
+    
+    // ----- TESTIMONIAL SECTION -----
+    
+    $wp_customize->add_setting('testimonial_heading_setting', array(
+            'default' => '',
+            'transport' => 'refresh',
+            'sanitize_callback' => 'sanitize_testimonialHeading'
+    ));
+    
+    $wp_customize->add_control(
+        new WP_Customize_Control(
+            $wp_customize,
+            'testimonial_heading_control',
+            array(
+                'label' => __('Testimonials section heading', 'cmosTheme'),
+                'section' => 'homepage_testimonials',
+                'settings' => 'testimonial_heading_setting',
                 'type' => 'text'
             )
         )
@@ -431,6 +457,12 @@ function custom_theme_customizer( $wp_customize ){
     
     function sanitize_link2( $link2 ) {
 	    return sanitize_text_field( $link2 );
+	}
+    
+    // Testimonial heading
+    
+    function sanitize_testimonialHeading( $headingText ) {
+	    return sanitize_text_field( $headingText );
 	}
     
     // Footer text
