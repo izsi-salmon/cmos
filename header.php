@@ -7,6 +7,7 @@
     <?php wp_head(); ?>
 </head>
 <body>
+   
     <div class="header" id="navbar">
         <div class="column-left">
            

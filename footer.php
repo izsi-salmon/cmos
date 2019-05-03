@@ -67,7 +67,25 @@
          </div>
     <?php endif; ?>
     
-    
+    <?php $docMessage = get_theme_mod( 'doc_message_setting'); ?>
+    <?php $docTitle = get_bloginfo('name'); ?>
+
     <?php wp_footer(); ?>
+    <script>
+        // Function controlling document title change
+
+        window.onblur = function() { 
+            var docMessage = '<?= $docMessage; ?>';
+            if(docMessage != ""){
+                document.title = docMessage; 
+            }
+        }
+
+        window.onfocus = function() {
+            var docTitle = '<?= $docTitle; ?>';
+            document.title = docTitle;
+        }
+        
+    </script>
 </body>
 </html>

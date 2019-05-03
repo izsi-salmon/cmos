@@ -11,9 +11,6 @@ var dropdownButton = document.getElementsByClassName('menu-item-has-children');
 var dropdownContent = document.getElementsByClassName('sub-menu');
 var headerCta = document.getElementById('headerCta');
 var headerCtaStyles = document.getElementsByClassName('cta-header')[0];
-// Document title DOM queries
-var docTitle = 'CMOS – Commercial Cleaning Company';
-var titleMessage = 'Hey, come back!';
 
 // Function setting the page content to sit below the navigation (mobile only)
 function setBuffer() {
@@ -26,12 +23,6 @@ function setBuffer() {
 
 document.body.onload = function() {setBuffer()};
 window.onresize = function() {setBuffer()};
-
-function showNavHeight(){
-    console.log(navHeight);
-}
-
-hamburgerButton.addEventListener('click', showNavHeight, false);
 
 // Function controlling hamburger menu (on mobile/tablet only)
 function toggleMenu(){
@@ -136,17 +127,6 @@ function addEventListeners(n){
 //        dropdownContent[n].style.maxHeight = dropdownContent[n].scrollHeight + 'px';
 //    }
 //}
-
-
-// Function controlling document title change
-
-window.onblur = function() { 
-    document.title = titleMessage; 
-}
-
-window.onfocus = function() {
-    document.title = docTitle; 
-}
 
 // SWIPER (Home page slideshow banner)
 

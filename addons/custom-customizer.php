@@ -48,6 +48,27 @@ function custom_theme_customizer( $wp_customize ){
         'title' => __('Footer Content', 'cmosTheme')
     ));
     
+    // DOC MESSAGE
+    
+    $wp_customize->add_setting('doc_message_setting', array(
+        'default' => '',
+        'transport' => 'none'
+    ));
+    
+    $wp_customize->add_control(
+        new WP_Customize_Control(
+            $wp_customize,
+            'doc_message_control',
+            array(
+                'label' => __('Title Message', 'cmosTheme'),
+                'description' => 'Add a message when the user leaves the page',
+                'section' => 'title_tagline',
+                'settings' => 'doc_message_setting',
+                'type' => 'text'
+            )
+        )
+    );
+    
     // SITE BLURB TITLE
     
     $wp_customize->add_setting('site_blurb_title_setting', array(

@@ -43,6 +43,15 @@ function addCustomMenus(){
 }
 add_action('init', 'addCustomMenus');
 
+add_filter('nav_menu_css_class' , 'active_nav_class' , 10 , 2);
+
+function active_nav_class ($classes, $item) {
+    if (in_array('current-menu-ancestor', $classes) || in_array('current-menu-item', $classes) ){
+        $classes[] = 'active ';
+    }
+    return $classes;
+}
+
 // ----- POST TYPES -----
 
 //// EXAMPLE

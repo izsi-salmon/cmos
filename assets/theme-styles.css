@@ -591,6 +591,7 @@ a.value-cta{
 .person-image{
     margin: 0 auto 1em auto;
     width: 50%;
+    max-width: 150px;
 }
 
 .person-image img{
@@ -1015,12 +1016,15 @@ a.value-cta{
     .people-container{
         display: flex;
             flex-wrap: wrap;
-            justify-content: center;
+            justify-content: flex-start;
     }
     
     .person-card{
-/*        margin: 2em 2em 4.5em 2em;*/
-        max-width: 250px;
+        width: 50%;
+    }
+    
+    .person-image{
+        width: 40%;
     }
     
     /* CAREERS */
@@ -1289,6 +1293,17 @@ a.value-cta{
         width: 45%;
     }
     
+    /*  PEOPLE  */
+    
+    .person-card{
+/*        margin: 2em 2em 4.5em 2em;*/
+        width: 25%;
+    }
+    
+    .person-image{
+        width: 50%;
+    }
+    
     /* CONTACT */
     
     .contact-section{
@@ -1322,16 +1337,6 @@ a.value-cta{
     
     .contact-location p{
         font-size: 1em;
-    }
-    
-}
-
-@media only screen and (min-width:1064px){
-    
-    /* PEOPLE */
-    
-    .people-container{
-        justify-content: center;
     }
     
 }
@@ -1434,7 +1439,7 @@ a.value-cta{
         padding: 0 0 0.1em 0;
     }
     
-    .nav-item-active{
+    .active{
         font-weight: 700;
     }
 
