@@ -45,6 +45,20 @@ add_action('init', 'addCustomMenus');
 
 add_filter('nav_menu_css_class' , 'active_nav_class' , 10 , 2);
 
+class child_wrap extends Walker_Nav_Menu
+{
+    function start_lvl(&$output, $depth = 0, $args = array())
+    {
+        $indent = str_repeat("\t", $depth);
+        $output .= "\n$indent<div class=\"sub-menu-container\"><ul class=\"sub-menu\">\n";
+    }
+    function end_lvl(&$output, $depth = 0, $args = array())
+    {
+        $indent = str_repeat("\t", $depth);
+        $output .= "$indent</ul></div>\n";
+    }
+}
+
 function active_nav_class ($classes, $item) {
     if (in_array('current-menu-ancestor', $classes) || in_array('current-menu-item', $classes) ){
         $classes[] = 'active ';

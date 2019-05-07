@@ -1378,22 +1378,8 @@ a.value-cta{
         text-decoration: none;
     }
     
-/*
-    .menu-item-has-children{
-        height: 4em;
-        float: left;
-    }
-*/
-
-    .nav ul li ul:before{
-        content: "";
-        position: absolute; 
-        top: -2em;
-        left: 0;
-        height: 2em;
-        width: 100%;
-        z-index: 1010;
-        background-color: rgba(255, 255, 0, 0);
+    .sub-menu-container{
+        position: absolute;
     }
     
     .nav ul li ul{
@@ -1406,7 +1392,6 @@ a.value-cta{
         margin-bottom: 0;
         margin-top: 1.7em;
             max-height: 0;
-        position: absolute;
         overflow: hidden;
         transition: max-height 0.3s;
         z-index: 5;

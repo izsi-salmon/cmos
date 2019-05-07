@@ -27,7 +27,8 @@
             <div class="nav" id="mobileMenu">
                <?php if ( has_nav_menu( 'header_nav' ) ) {
                      wp_nav_menu( array(
-                        'theme_location' => 'header_nav'
+                        'theme_location' => 'header_nav',
+                        'walker' => new child_wrap()
                      ) );
                 } ?>
             </div>            

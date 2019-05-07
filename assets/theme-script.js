@@ -1,11 +1,14 @@
 // Sticky nav bar variables
 var navbar = document.getElementById('navbar');
 var pageBuffer = document.getElementById('pageBuffer');
+var navStyles = window.getComputedStyle(navbar);
 // Mobile hamburger menu DOM queries
 var hamburgerButton = document.getElementById('hamburgerIcon');
 var mobileNavContent = document.getElementById('mobileMenu');
 var dropshadow = document.getElementById('dropshadow');
-var navHeight = navbar.scrollHeight;
+var navHeight;
+var parsedNavHeight;
+var ctaHeight;
 // Dropdown menu DOM queries
 var dropdownButton = document.getElementsByClassName('menu-item-has-children');
 var dropdownContent = document.getElementsByClassName('sub-menu');
@@ -14,10 +17,13 @@ var headerCtaStyles = document.getElementsByClassName('cta-header')[0];
 
 // Function setting the page content to sit below the navigation (mobile only)
 function setBuffer() {
-    var navHeight = navbar.scrollHeight;
-    pageBuffer.style.height = navHeight +'px';
-    if(headerCta){
-        var ctaHeight = headerCta.scrollHeight;
+    navHeight = navStyles.getPropertyValue('height');
+    pageBuffer.style.height = navHeight;
+    console.log(navHeight);
+    if(window.innerWidth < 1200){
+        ctaHeight = headerCta.scrollHeight;
+        parsedNavHeight = parseInt(navHeight);
+        pageBuffer.style.height = parsedNavHeight + ctaHeight + 'px';
     }
 }
 
@@ -26,16 +32,17 @@ window.onresize = function() {setBuffer()};
 
 // Function controlling hamburger menu (on mobile/tablet only)
 function toggleMenu(){
+    console.log(navHeight);
     if(mobileNavContent.style.maxHeight){
         mobileNavContent.style.maxHeight = null;
         dropshadow.style.opacity = '0';
         dropshadow.style.pointerEvents = 'none';
         document.body.style.overflow = 'auto';
-        pageBuffer.style.height = navHeight + 'px';
+        pageBuffer.style.height = parsedNavHeight + ctaHeight + 'px';
         if(headerCta){
             headerCta.style.backgroundColor = '#3EAB46';
             headerCta.style.color = '#FFF';
-            if ((window.innerWidth >= 600) && (window.innerWidth <= 1200)){
+            if ((window.innerWidth >= 600) && (window.innerWidth < 1200)){
                 headerCta.style.width = '100%';
                 headerCta.style.boxSizing = 'content-box';
             }
@@ -44,7 +51,7 @@ function toggleMenu(){
     } else{
         // Setting the mobile nav position based on navbar height
         var mobileNavDiv = document.getElementsByClassName('nav')[0];
-        mobileNavDiv.style.top = navHeight + 'px';
+        mobileNavDiv.style.top = parsedNavHeight + ctaHeight + 'px';
         mobileNavContent.style.maxHeight = mobileNavContent.scrollHeight + 'px';
         dropshadow.style.opacity = '0.4';
         dropshadow.style.pointerEvents = 'auto';
@@ -99,10 +106,6 @@ function addEventListeners(n){
 //            console.log(dropdownContent[n].style.overflow);
         } else{
             dropdownContent[n].style.maxHeight = dropdownContent[n].scrollHeight + 'px';
-            if(dropdownContent[n].scrollHeight + 'px' === dropdownContent[n].style.maxHeight){
-                console.log(dropdownContent[n].style.maxHeight);
-            }
-//            console.log(dropdownContent[n].style.overflow);
         }
     });
 }
