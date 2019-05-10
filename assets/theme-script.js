@@ -10,7 +10,8 @@ var navHeight;
 var parsedNavHeight;
 var ctaHeight;
 // Dropdown menu DOM queries
-var dropdownButton = document.getElementsByClassName('menu-item-has-children');
+var dropdownButton = document.getElementById('dropdownButton');
+var dropdownElement = document.getElementsByClassName('menu-item-has-children');
 var dropdownContent = document.getElementsByClassName('sub-menu');
 var headerCta = document.getElementById('headerCta');
 var headerCtaStyles = document.getElementsByClassName('cta-header')[0];
@@ -77,7 +78,7 @@ dropshadow.addEventListener('click', toggleMenu, false);
 
 // Function that finds/loops dropdown event listeners
 var setDropdownEventListeners = function(){
-    for (i = 0; i < dropdownButton.length; i++) { 
+    for (i = 0; i < dropdownElement.length; i++) { 
         addEventListeners(i);
     }
     
@@ -85,15 +86,11 @@ var setDropdownEventListeners = function(){
 
 // Function that sets event listeners
 function addEventListeners(n){
-        
-//        dropdownButton[n].addEventListener("click", function(event){
-//          event.preventDefault()
-//        });
 
-//    dropdownButton[n].addEventListener('mouseover', function(){openDropdown(n)}, false);
+    dropdownButton.addEventListener('mouseover', function(){openDropdown(n)}, false);
         
     document.addEventListener('mouseover', function(event) {
-        var isOver = dropdownButton[n].contains(event.target);
+        var isOver = dropdownElement[n].contains(event.target);
         
 //        console.log(dropdownContent[n].style.maxHeight);
 //        console.log(dropdownContent[n].scrollHeight + 'px');
@@ -104,20 +101,13 @@ function addEventListeners(n){
 //            console.log(dropdownContent[n].style.maxHeight);
 //            dropdownContent[n].style.overflow = 'hidden';
 //            console.log(dropdownContent[n].style.overflow);
-        } else{
-            dropdownContent[n].style.maxHeight = dropdownContent[n].scrollHeight + 'px';
         }
     });
 }
 
-//function openDropdown(n){
-//    dropdownContent[n].style.maxHeight = dropdownContent[n].scrollHeight + 'px';
-//    setTimeout(function(){ dropdownContent[n].style.overflow = 'visible'; }, 300);
-    
-    
-    
-//    dropdownButton[n].addEventListener('mouseleave', function(){closeDropdown(n)}, false);
-//}
+function openDropdown(n){
+    dropdownContent[n].style.maxHeight = dropdownContent[n].scrollHeight + 'px';
+}
 
 //function closeDropdown(n){
 //    setTimeout(function(){ dropdownContent[n].style.maxHeight = null; }, 1000);
@@ -147,6 +137,14 @@ var swiper = new Swiper('.swiper1', {
 });
 
 var swiper2 = new Swiper('.swiper2', {
+  slidesPerView: 1,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      }
+});
+
+var swiper3 = new Swiper('.swiper3', {
   slidesPerView: 3,
       pagination: {
         el: '.swiper-pagination',

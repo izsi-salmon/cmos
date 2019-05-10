@@ -11,6 +11,7 @@
 
     $peopleArgs = array(
         'post_type' => 'people',
+        'posts_per_page' => -1,
         'order' => 'ASC',
         'orderby' => 'menu_order'
         );

@@ -66,6 +66,14 @@ function active_nav_class ($classes, $item) {
     return $classes;
 }
 
+add_filter( 'nav_menu_link_attributes', function ( $atts, $item, $args ) {
+    if ( in_array('menu-item-has-children', $item->classes) ) { // change 1161 to the ID of your menu item.
+        $atts['id'] = 'dropdownButton';
+    }
+
+    return $atts;
+}, 10, 3 );
+
 // ----- POST TYPES -----
 
 //// EXAMPLE

@@ -394,6 +394,7 @@ a.page-cta{
 .service-menu-item{
     display: block;
     margin-bottom: 2.5em;
+    max-width: 200px;
 }
 
 .service-menu-item:last-of-type{
@@ -428,12 +429,12 @@ a.service-menu-item{
     display: inline-block;
 }
 
-.swiper2{
+.swiper3{
     margin: 0 auto;
     width: 80%;
 }
 
-.swiper2-slide{
+.swiper3-slide{
     margin-bottom: 2em;
 }
 
@@ -453,6 +454,13 @@ a.service-menu-item{
 .testimonial-content{
     margin: 0 auto;
     max-width: 360px;
+    padding: 2em 0;
+    width: 80%;
+}
+
+.testimonial-content-full{
+    margin: 0 auto;
+    max-width: 540px;
     padding: 2em 0;
     width: 80%;
 }
@@ -706,11 +714,11 @@ a.value-cta{
 
 .contact-form label{
     display: block;
-    margin-bottom: 0.5em;
 }
 
-.contact-form input{
+.contact-form input, .contact-form textarea{
     display: block;
+    margin-top: 0.7em;
     margin-bottom: 1.7em;
 }
 
@@ -725,7 +733,6 @@ a.value-cta{
     box-sizing: border-box;
     border: 1px solid #BABABA;
     height: 150px;
-    margin-bottom: 1.7em;
     padding: 0.7em;
     width: 100%;
 }
@@ -739,6 +746,13 @@ a.value-cta{
     font-weight: 700;
     padding: 0.7em 2em;
     text-transform: uppercase;
+}
+
+.form-error{
+    color: red;
+    font-size: 0.8em;
+    margin-top: 0.3em;
+    opacity: 0.8;
 }
 
 .form-submit:hover{
@@ -1099,6 +1113,7 @@ a.value-cta{
     
     .service-menu{
         display: flex;
+            align-items: center;
         margin: 0 auto 0 auto;
         max-width: 800px;
         height: 9em;
@@ -1115,6 +1130,18 @@ a.value-cta{
     a.service-menu-item:hover .service-icon{
         font-size: 3.1em;
         transition: font-size 0.2s;
+    }
+    
+    /*  TESTIMONIALS  */
+    
+    .testimonial-content-full{
+        font-size: 1.1em;
+        padding: 3em 0;
+    }
+    
+    .swiper-pagination-large .swiper-pagination-bullet{
+        height: 10px;
+        width: 10px;
     }
     
     /* SERVICE PAGE */
@@ -1312,7 +1339,6 @@ a.value-cta{
     
     .section-title{
         font-size: 3em;
-        margin-bottom: 1em;
         width: 90%;
     }
     
@@ -1597,6 +1623,12 @@ a.value-cta{
     
     .page-title{
         font-size: 2.7em;
+    }
+    
+    /*  TESTIMONIALS  */
+    
+    .hidden-pagination{
+        display: none;
     }
     
     /*  ABOUT  */

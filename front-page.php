@@ -94,43 +94,89 @@
                    <div class="underline-grey underline-60 underline-wrap"></div>
                </h2>
            </div>
-        <?php endif; ?>
-
-        <div class="swiper-container swiper2">
-            <div class="swiper-wrapper">
-               
-                <?php while($testimonials->have_posts()): $testimonials->the_post(); ?>
-
-                <?php
-                  $postID = get_the_id();
-                  $association = get_post_meta($postID, 'client_association', true);
-                  $heading = get_post_meta($postID, 'testimonial_heading', true);
-                ?>
-                    <div class="swiper-slide swiper2-slide">
-                        <div class="testimonial-content">
-                            <?php if($heading): ?>
-                                <div class="testimonial-title">
-                                    <?= $heading ?>
+          <?php endif; ?>
+              
+                <?php if(sizeof($testimonials->posts) < 3): ?>
+                  
+                    <div class="swiper-container swiper2">
+                        <div class="swiper-wrapper">
+                        
+                        <?php while($testimonials->have_posts()): $testimonials->the_post(); ?>
+                        
+                            <?php
+                              $postID = get_the_id();
+                              $association = get_post_meta($postID, 'client_association', true);
+                              $heading = get_post_meta($postID, 'testimonial_heading', true);
+                            ?>
+                        
+                            <div class="swiper-slide swiper2-slide">
+                                <div class="testimonial-content-full">
+                                    <?php if($heading): ?>
+                                        <div class="testimonial-title">
+                                            <?= $heading ?>
+                                        </div>
+                                    <?php endif; ?>
+                                    <div class="testimonial-parag">
+                                        <p><?php the_content() ?></p>
+                                    </div>
+                                    <div class="testimonial-sign">
+                                        <h5><?php the_title() ?></h5>
+                                        <?php if($association): ?>
+                                            <p><?= $association ?></p>
+                                        <?php endif; ?>
+                                    </div>
                                 </div>
-                            <?php endif; ?>
-                            <div class="testimonial-parag">
-                                <p><?php the_content() ?></p>
                             </div>
-                            <div class="testimonial-sign">
-                                <h5><?php the_title() ?></h5>
-                                <?php if($association): ?>
-                                    <p><?= $association ?></p>
-                                <?php endif; ?>
-                            </div>
+                        
+                        <?php endwhile; ?>
+                        
                         </div>
+                        <div class="swiper-pagination swiper-pagination-large"></div>
                     </div>
-                    
-                    <?php endwhile; ?>
                 
-            </div>
-        <!-- Add Pagination -->
-        <div class="swiper-pagination"></div>
-        </div>
+                <?php else: ?>
+                
+                    <div class="swiper-container swiper3">
+                        <div class="swiper-wrapper">
+                        
+                        <?php while($testimonials->have_posts()): $testimonials->the_post(); ?>
+                        
+                            <?php
+                              $postID = get_the_id();
+                              $association = get_post_meta($postID, 'client_association', true);
+                              $heading = get_post_meta($postID, 'testimonial_heading', true);
+                            ?>
+                        
+                            <div class="swiper-slide swiper3-slide">
+                                <div class="testimonial-content">
+                                    <?php if($heading): ?>
+                                        <div class="testimonial-title">
+                                            <?= $heading ?>
+                                        </div>
+                                    <?php endif; ?>
+                                    <div class="testimonial-parag">
+                                        <p><?php the_content() ?></p>
+                                    </div>
+                                    <div class="testimonial-sign">
+                                        <h5><?php the_title() ?></h5>
+                                        <?php if($association): ?>
+                                            <p><?= $association ?></p>
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        <?php endwhile; ?>
+                        
+                        </div>
+                        <?php if(sizeof($testimonials->posts) == 3): ?>
+                            <div class="swiper-pagination swiper-pagination-large hidden-pagination"></div>
+                        <?php else: ?>
+                            <div class="swiper-pagination swiper-pagination-large"></div>
+                        <?php endif; ?>
+                    </div>
+                
+                <?php endif; ?>
     </div>
 <?php endif; ?>
 
