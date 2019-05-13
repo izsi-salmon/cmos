@@ -147,12 +147,6 @@ add_action( 'admin_init', 'add_post_format_metabox' );
 
 function show_metaboxes( $post, $args ) {
     global $metaboxes;
-//    if ( get_post_meta( $post->ID, '_wp_page_template', true != 'about-template.php' ) ) {
-//        echo('hello');
-//        unset($metaboxes['about_image']);
-//        var_dump($metaboxes);
-//        die($metaboxes);
-//    }
     $custom = get_post_custom( $post->ID );
     $fields = $tabs = $metaboxes[$args['id']]['fields'];
     

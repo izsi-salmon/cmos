@@ -21,6 +21,7 @@
 
     $subservicesArgs = array(
         'post_type' => 'subservices',
+        'posts_per_page' => -1,
         'meta_query' => array(
             array(
                 'key' => 'service_page',

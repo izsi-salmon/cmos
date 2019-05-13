@@ -2,6 +2,7 @@
 
     $locationsArgs = array(
         'post_type' => 'locations',
+        'posts_per_page' => -1,
         'order' => 'ASC',
         'orderby' => 'menu_order'
         );

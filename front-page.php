@@ -5,6 +5,7 @@
 
     $slideArgs = array(
         'post_type' => 'slides',
+        'posts_per_page' => -1,
         'order' => 'ASC',
         'orderby' => 'menu_order'
     );
@@ -12,6 +13,7 @@
 
     $testimonialArgs = array(
         'post_type' => 'testimonials',
+        'posts_per_page' => -1,
         'order' => 'ASC',
         'orderby' => 'date'
     );

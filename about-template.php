@@ -18,7 +18,8 @@
     $heading = strip_tags($h2);
 
     $aboutvaluesArgs = array(
-        'post_type' => 'aboutvalues'
+        'post_type' => 'aboutvalues',
+        'posts_per_page' => -1
         );
     $aboutvalues = new WP_Query($aboutvaluesArgs);
 
@@ -82,6 +83,7 @@
 
                 $subvaluesArgs = array(
                     'post_type' => 'subvalues',
+                    'posts_per_page' => -1,
                     'meta_query' => array(
                         array(
                             'key' => 'value_section',

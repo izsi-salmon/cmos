@@ -11,6 +11,7 @@
 
     $locationsArgs = array(
         'post_type' => 'locations',
+        'posts_per_page' => -1,
         'order' => 'ASC',
         'orderby' => 'menu_order'
         );
@@ -111,13 +112,13 @@
                     <?php wp_nonce_field('wp_contact_form'); ?>
                     <label for="full_name">Name: *</label>
                     <span class="form-error"><?= $errors['nameError'] ?></span>
-                    <input type="text" name="full_name" value="<?php if ($_POST && !empty($errors)): ?> <?php echo isset($_POST['full_name']) ? $_POST['full_name'] : '' ?> <?php endif; ?>"/>
+                    <input type="text" required name="full_name" value="<?php if ($_POST && !empty($errors)): ?> <?php echo isset($_POST['full_name']) ? $_POST['full_name'] : '' ?> <?php endif; ?>"/>
                     <label for="email">Email: *</label>
                     <span class="form-error"><?= $errors['emailError'] ?></span>
-                    <input type="email" name="email" value="<?php if ($_POST && !empty($errors)): ?> <?php echo isset($_POST['email']) ? $_POST['email'] : '' ?> <?php endif; ?>"/>
+                    <input type="email" required name="email" value="<?php if ($_POST && !empty($errors)): ?> <?php echo isset($_POST['email']) ? $_POST['email'] : '' ?> <?php endif; ?>"/>
                     <label for="enquiry">Enquiry: *</label>
                     <span class="form-error"><?= $errors['enquiryError'] ?></span>
-                    <textarea name="enquiry"><?php if ($_POST && !empty($errors)): ?> <?php echo isset($_POST['enquiry']) ? $_POST['enquiry'] : '' ?> <?php endif; ?></textarea>
+                    <textarea name="enquiry" required><?php if ($_POST && !empty($errors)): ?> <?php echo isset($_POST['enquiry']) ? $_POST['enquiry'] : '' ?> <?php endif; ?></textarea>
                     <input type="submit" name="submit" value="submit" class="form-submit">
                 </form>
                 
