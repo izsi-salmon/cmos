@@ -44,6 +44,10 @@ function custom_theme_customizer( $wp_customize ){
         'panel' => 'adtnl_ctas'
     ));
     
+    $wp_customize->add_section('contact_form', array(
+        'title' => __('Contact Form', 'cmosTheme')
+    ));
+    
     $wp_customize->add_section('footer_content', array(
         'title' => __('Footer Content', 'cmosTheme')
     ));
@@ -403,6 +407,48 @@ function custom_theme_customizer( $wp_customize ){
                 'section' => 'contact_cta',
                 'settings' => 'contact_cta_link_setting',
                 'type' => 'text'
+            )
+        )
+    );
+    
+    // ----- CONTACT FORM -----
+    
+    // Submit message
+    $wp_customize->add_setting('submit_message_setting', array(
+        'default' => '',
+        'transport' => 'refresh'
+    ));
+    
+    $wp_customize->add_control(
+        new WP_Customize_Control(
+            $wp_customize,
+            'submit_message_control',
+            array(
+                'label' => __('Submit Message', 'cmosTheme'),
+                'description' => 'Add a message below the submit button.',
+                'section' => 'contact_form',
+                'settings' => 'submit_message_setting',
+                'type' => 'textarea'
+            )
+        )
+    );
+    
+    // Success message
+    $wp_customize->add_setting('success_message_setting', array(
+        'default' => '',
+        'transport' => 'refresh'
+    ));
+    
+    $wp_customize->add_control(
+        new WP_Customize_Control(
+            $wp_customize,
+            'success_message_control',
+            array(
+                'label' => __('Success Message', 'cmosTheme'),
+                'description' => 'Add a message to the user when the form has been submitted successfully.',
+                'section' => 'contact_form',
+                'settings' => 'success_message_setting',
+                'type' => 'textarea'
             )
         )
     );

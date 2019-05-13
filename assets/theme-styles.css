@@ -608,7 +608,7 @@ a.value-cta{
     width: 100%;
 }
 
-.person-name, .person-role, .person-email{
+.person-name, .person-role, .person-email, .person-phone{
     color: #666;
     text-align: center;
 }
@@ -618,12 +618,12 @@ a.value-cta{
     font-weight: 600;
 }
 
-.person-role{
-/*    font-style: italic;*/
-}
-
 .person-email{
     font-size: 0.9em;
+}
+
+.person-phone{
+    font-size: 0.7em;
 }
 
 /* CAREERS */
@@ -760,7 +760,7 @@ a.value-cta{
     transition: 0.3s;
 }
 
-.submit-warning{
+.submit-message{
     color: #666;
     font-size: 0.9em;
     font-style: italic;

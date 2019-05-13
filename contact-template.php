@@ -16,8 +16,49 @@
         );
     $locations = new WP_Query($locationsArgs);
 
+    $pageUrl = get_the_permalink();
+
+    // CONTACT FORM
+
+    if ($_POST) {
+		$errors = array();
+		$success_messsage = '';
+		if (!wp_verify_nonce($_POST['_wpnonce'], 'wp_contact_form')) {
+			echo("We cannot save the data at this time. Please try again later.");
+			return;
+		}
+		if (strlen($_POST['full_name']) <= 2) {
+			$errors['nameError'] = 'Name is too short. Please enter your full name';
+		} elseif (strlen($_POST['full_name']) >= 90) {
+			$errors['nameError'] = 'Name is too long.';
+		}
+		if (strlen($_POST['email']) <= 1) {
+			$errors['emailError'] = 'Email is too short. Please enter a valid email.';
+		}
+		if (strlen($_POST['enquiry']) <= 5) {
+			$errors['enquiryError'] = 'Please write a more detailed enquiry';
+		} elseif (strlen($_POST['user_message']) >= 400) {
+			$errors['enquiryError'] = 'Please write a shorter enquiry';
+		}
+		if (empty($errors)) {
+            
+            $success_message = get_theme_mod( 'success_message_setting');
+            
+            $name = $_POST['full_name'];
+            $mailFrom = $_POST['email'];
+            $enquiry = $_POST['enquiry'];
+
+            $mailTo = '8m8cat@gmail.com';
+            $headers = 'From : '.$mailFrom;
+            $message = 'You have recieved an enquiry from: '.$name.'\n\n Message: \n\n'.$enquiry;
+
+            mail($mailTo, 'Website enquiry', $message, $headers);
+		}
+	}
+
+
 ?>
-  
+
 <?php get_header('contact'); ?>
 <?php require 'includes/page-buffer.php'; ?>
 <?php require 'includes/banner.php'; ?>
@@ -66,17 +107,28 @@
             
             <div class="contact-collumn">
                 <h2 class="form-title">Get a Free Quote:</h2>
-                <form action="" class="contact-form">
-                    <label for="firstname">Name: *</label>
-                    <input type="text" name="name">
+                <form method="post" action="<?= $pageUrl; ?>" class="contact-form">
+                    <?php wp_nonce_field('wp_contact_form'); ?>
+                    <label for="full_name">Name: *</label>
+                    <span class="form-error"><?= $errors['nameError'] ?></span>
+                    <input type="text" name="full_name" value="<?php if ($_POST && !empty($errors)): ?> <?php echo isset($_POST['full_name']) ? $_POST['full_name'] : '' ?> <?php endif; ?>"/>
                     <label for="email">Email: *</label>
-                    <input type="email" name="email">
+                    <span class="form-error"><?= $errors['emailError'] ?></span>
+                    <input type="email" name="email" value="<?php if ($_POST && !empty($errors)): ?> <?php echo isset($_POST['email']) ? $_POST['email'] : '' ?> <?php endif; ?>"/>
                     <label for="enquiry">Enquiry: *</label>
-                    <textarea name="enquiry"></textarea>
-                    <input type="submit" value="submit" class="form-submit">
+                    <span class="form-error"><?= $errors['enquiryError'] ?></span>
+                    <textarea name="enquiry"><?php if ($_POST && !empty($errors)): ?> <?php echo isset($_POST['enquiry']) ? $_POST['enquiry'] : '' ?> <?php endif; ?></textarea>
+                    <input type="submit" name="submit" value="submit" class="form-submit">
                 </form>
-                <p class="submit-warning">Warning: Pressing button will remove all issues regarding cleaning from your life which may lead to celebrations that are hazardous for your health if you do them properly.</p>
+                
+                <?php if($_POST): ?>
+                    <p class="submit-message"><?php if($success_message) {echo $success_message;} ?></p>
+                <?php else: ?>
+                    <p class="submit-message"><?php if(get_theme_mod( 'submit_message_setting') != ""){echo get_theme_mod( 'submit_message_setting');} ?></p>
+                <?php endif; ?>
+                
             </div>
+            
             
         </div>
     </div>

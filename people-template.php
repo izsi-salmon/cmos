@@ -32,6 +32,7 @@
                           $postID = get_the_id();
                           $role = get_post_meta($postID, 'staff_role_field', true);
                           $email = get_post_meta($postID, 'staff_email_field', true);
+                          $phone = get_post_meta($postID, 'staff_phone_field', true);
                     ?>
                    
                     <div class="person-card">
@@ -44,6 +45,9 @@
                         <?php endif; ?>
                         <?php if($email): ?>
                             <div class="person-email"><?= $email; ?></div>
+                        <?php endif; ?>
+                        <?php if($phone): ?>
+                            <div class="person-phone"><?= $phone; ?></div>
                         <?php endif; ?>
                     </div>
                 <?php endwhile; ?>

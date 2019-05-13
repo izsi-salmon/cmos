@@ -96,6 +96,18 @@ $metaboxes = array(
           )
       )
     ),
+    'staff_phone' => array(
+      'title' => __('Phone', 'cmosTheme'),
+      'applicableto' => 'people',
+      'location' => 'normal',
+      'priority' => 'low',
+      'fields' => array(
+          'staff_phone_field' => array(
+              'title' => __('Add person\'s phone number'),
+              'type' => 'phone'
+          )
+      )
+    ),
     'service_pages' => array(
       'title' => __('Service Page', 'cmosTheme'),
       'applicableto' => 'subservices',
@@ -166,6 +178,9 @@ function show_metaboxes( $post, $args ) {
                 break;
                 case 'email':
                     $output .= '<div class="form-group"><label for="' . $id . '">' . $field['title'] . '</label><input class="customInput" id="' . $id . '" type="text" name="' . $id . '" value="' . $custom[$id][0] . '" style="width: 100%;" /></div>';
+                break;
+                case 'phone':
+                $output .= '<div class="form-group"><label for="' . $id . '">' . $field['title'] . '</label><input class="customInput" id="' . $id . '" type="number" name="' . $id . '" value="' . $custom[$id][0] . '" style="width: 100%;" /></div>';
                 break;
                 case 'value_icon':
                     $convertedValue = str_replace('"', "'", $custom[$id][0]);
