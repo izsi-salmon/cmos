@@ -32,7 +32,6 @@ html{
     display: flex;
         justify-content: space-between;
         align-items: center;
-/*    margin-bottom: 52px;*/
     padding: 0.5em 2em;
     position: fixed;
         top: 0;
@@ -1661,7 +1660,7 @@ a.value-cta{
     }
     
     .swiper-container-header, .banner-image{
-        min-height: 45em;
+        min-height: 35em;
     }
     
     .slide-content{
@@ -1669,7 +1668,7 @@ a.value-cta{
     }
     
     .page-title{
-        font-size: 7rem;
+        font-size: 3.7rem;
     }
     
     .page-blurb{
@@ -1681,14 +1680,34 @@ a.value-cta{
         max-width: 1000px;
     }
     
+    /*  TESTIMONIALS  */
+    
     .testimonial-container{
         max-width: 1500px;
+    }
+    
+    .testimonial-content-full{
+        max-width: 740px;
+    }
+    
+    /*  SERVICE MENU  */
+    
+    .service-menu-item{
+        max-width: 250px;
+    }
+    
+    .service-icon{
+        font-size: 3rem;
     }
     
     /*  PAGE FEATURES  */
     
     .section{
-        padding: 10em 0;
+        padding: 5em 0;
+    }
+    
+    .section-title{
+        font-size: 4em;
     }
     
     /*  ABOUT  */
@@ -1704,6 +1723,22 @@ a.value-cta{
         max-width: 1600px;
     }
     
+    /* CAREERS */
+    
+    .employee-values-container{
+        max-width: 1500px;
+    }
+    
+    /*  CONTACT  */
+    
+    .contact-collumn-left{
+        font-size: 1.3em;
+    }
+    
+    /*  FOOTER  */
+    
+    .locations-container{
+        width: 70%;
+    }
+    
 }
-
-/*END*/

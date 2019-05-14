@@ -49,7 +49,7 @@
             $mailFrom = $_POST['email'];
             $enquiry = $_POST['enquiry'];
 
-            $mailTo = '8m8cat@gmail.com';
+            $mailTo = 'welcome@cmos.co.nz';
             $headers =  'MIME-Version: 1.0' . "\r\n"; 
             $headers .= 'From: <'.$mailFrom.'>' . "\r\n";
             $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
@@ -69,7 +69,7 @@
     <div class="contact-section">
         <div class="contact-container">
             
-            <div class="contact-collumn">
+            <div class="contact-collumn contact-collumn-left">
                <?php if( get_theme_mod( 'phone_button_text_setting') != ""): ?>
                    <div class="phone-flex">
                        <?php if( get_theme_mod( 'phone_button_icon_setting')): ?>
