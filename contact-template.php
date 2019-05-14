@@ -50,7 +50,9 @@
             $enquiry = $_POST['enquiry'];
 
             $mailTo = '8m8cat@gmail.com';
-            $headers = 'From : '.$mailFrom;
+            $headers =  'MIME-Version: 1.0' . "\r\n"; 
+            $headers .= 'From: <'.$mailFrom.'>' . "\r\n";
+            $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
             $message = 'You have recieved an enquiry from: '.$name.'\n\n Message: \n\n'.$enquiry;
 
             mail($mailTo, 'Website enquiry', $message, $headers);
