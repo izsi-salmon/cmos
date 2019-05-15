@@ -22,6 +22,8 @@
     $subservicesArgs = array(
         'post_type' => 'subservices',
         'posts_per_page' => -1,
+        'order' => 'ASC',
+        'orderby' => 'menu_order',
         'meta_query' => array(
             array(
                 'key' => 'service_page',

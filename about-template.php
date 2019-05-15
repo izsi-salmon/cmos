@@ -19,7 +19,9 @@
 
     $aboutvaluesArgs = array(
         'post_type' => 'aboutvalues',
-        'posts_per_page' => -1
+        'posts_per_page' => -1,
+        'order' => 'ASC',
+        'orderby' => 'menu_order'
         );
     $aboutvalues = new WP_Query($aboutvaluesArgs);
 
@@ -84,6 +86,8 @@
                 $subvaluesArgs = array(
                     'post_type' => 'subvalues',
                     'posts_per_page' => -1,
+                    'order' => 'ASC',
+                    'orderby' => 'menu_order',
                     'meta_query' => array(
                         array(
                             'key' => 'value_section',

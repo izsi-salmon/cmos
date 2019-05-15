@@ -216,7 +216,8 @@ function add_subservices_post_type(){
         'menu_icon' => 'dashicons-editor-ul',
         'supports' => array(
             'title',
-            'thumbnail'
+            'thumbnail',
+            'page-attributes'
         ),
         'query_var' => true
     );
@@ -244,7 +245,8 @@ function add_aboutValues_post_type(){
         'menu_icon' => 'dashicons-heart',
         'supports' => array(
             'title',
-            'editor'
+            'editor',
+            'page-attributes'
         ),
         'query_var' => true
     );
@@ -272,7 +274,8 @@ function add_subValues_post_type(){
         'menu_icon' => 'dashicons-excerpt-view',
         'supports' => array(
             'title',
-            'editor'
+            'editor',
+            'page-attributes'
         ),
         'query_var' => true
     );
