@@ -156,7 +156,5 @@
             
         </div>
     </div>
-    
-    <button id="modalButton">Modal Button</button>
 
 <?php get_footer(); ?>
