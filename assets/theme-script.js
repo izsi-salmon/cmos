@@ -2,19 +2,25 @@
 var navbar = document.getElementById('navbar');
 var pageBuffer = document.getElementById('pageBuffer');
 var navStyles = window.getComputedStyle(navbar);
-// Mobile hamburger menu DOM queries
+// Mobile hamburger menu variables
 var hamburgerButton = document.getElementById('hamburgerIcon');
 var mobileNavContent = document.getElementById('mobileMenu');
 var dropshadow = document.getElementById('dropshadow');
 var navHeight;
 var parsedNavHeight;
 var ctaHeight;
-// Dropdown menu DOM queries
+// Dropdown menu variables
 var dropdownButton = document.getElementById('dropdownButton');
 var dropdownElement = document.getElementsByClassName('menu-item-has-children');
 var dropdownContent = document.getElementsByClassName('sub-menu');
 var headerCta = document.getElementById('headerCta');
 var headerCtaStyles = document.getElementsByClassName('cta-header')[0];
+// Modal variables
+var modalButton = document.getElementById('modalButton');
+var successModal = document.getElementById('successModal');
+var successWrapper = document.getElementById('successWrapper');
+var closeSuccess = document.getElementById('closeSuccess');
+
 
 // Function setting the page content to sit below the navigation (mobile only)
 function setBuffer() {
@@ -108,7 +114,20 @@ function openDropdown(n){
     dropdownContent[n].style.maxHeight = dropdownContent[n].scrollHeight + 'px';
 }
 
-// SWIPER (Home page slideshow banner)
+function closeSuccessModal(){
+    successWrapper.style.display = 'none';
+}
+closeSuccess.addEventListener('click', closeSuccessModal, false);
+
+if(successWrapper){
+    window.onclick = function(event) {
+      if (event.target == successWrapper) {
+        successWrapper.style.display = "none";
+      }
+    }
+}
+
+// SWIPERS (Image and text slide shows)
 
 var swiper = new Swiper('.swiper1', {
   slidesPerView: 1,

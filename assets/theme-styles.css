@@ -141,30 +141,6 @@ html{
     margin: 0 0.8em 0 0.5em;
 }
 
-/*
-.mobile-cta{
-    background-color: #1D5AA3;
-    background-color: #3EAB46;
-    color: #383838;
-    color: #FFF;
-    display: flex;
-        justify-content: flex-end;
-        align-items: center;
-    font-weight: 600;
-    padding: 1em;
-    text-transform: uppercase;
-}
-
-.mobile-cta a{
-    color: inherit;
-    text-decoration: none;
-}
-
-.mobile-cta span{
-    margin-right: 0.8em;
-}
-*/
-
 .drop-shadow{
     background-color: #000;
     position: fixed;
@@ -174,7 +150,7 @@ html{
     opacity: 0;
     transition: 0.5s;
     width: 100vw;
-    z-index: 999;
+    z-index: 10;
 }
 
 /* SWIPER (Homepage slideshow banner) */
@@ -665,6 +641,67 @@ a.value-cta{
 
 /* CONTACT */
 
+.success-modal-wrapper{
+    background-color: rgba(0,0,0,0.4);
+    display: block;
+    height: 100%;
+    position: fixed;
+        left: 0;
+        top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.success-modal {
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    margin: 50% auto;
+    max-width: 400px;
+    position: relative;
+    width: 90%;
+}
+
+@keyframes animatetop {
+  from {top: -300px; opacity: 0}
+  to {top: 0; opacity: 1}
+}
+
+.success-tick{
+    color: #34a73a;
+    font-size: 3em;
+    margin-bottom: 0.2em;
+}
+
+.modal-content{
+    padding: 1em;
+    text-align: center;
+}
+
+.modal-text{
+    font-size: 1.1em;
+    margin: 0 auto 0.5em auto;
+    width: 90%;
+}
+
+.close {
+    color: #FFF;
+    cursor: pointer;
+    background: #34a73a;
+    border-radius: 0 0 15px 15px;
+    font-weight: 800;
+    padding: 0.3em;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.close:hover,
+.close:focus {
+    background: #37B03E;
+}
+
 .contact-section{
     margin: 0 auto 2em auto;
     width: 90%;
@@ -1063,6 +1100,10 @@ a.value-cta{
     
     /* CONTACT */
     
+    .success-modal{
+        margin: 15% auto;
+    }
+    
     .contact-section{
         width: 80%;
     }
@@ -1176,6 +1217,14 @@ a.value-cta{
     }
     
     /* CONTACT */
+
+    .modal-text{
+        width: 80%;
+    }
+    
+    .close{
+        padding: 0.6em;
+    }
     
     .contact-section{
         margin-bottom: 3em;
@@ -1319,7 +1368,6 @@ a.value-cta{
     /*  PEOPLE  */
     
     .person-card{
-/*        margin: 2em 2em 4.5em 2em;*/
         width: 25%;
     }
     
@@ -1503,10 +1551,6 @@ a.value-cta{
     
     .banner-title{
         font-size: 2.5em;
-    }
-    
-    .section{
-/*        padding: 3em 0;*/
     }
     
     .blurb-70{

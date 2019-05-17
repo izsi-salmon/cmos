@@ -23,6 +23,7 @@
 
     if ($_POST) {
 		$errors = array();
+        $success = false;
 		$success_messsage = '';
 		if (!wp_verify_nonce($_POST['_wpnonce'], 'wp_contact_form')) {
 			echo("We cannot save the data at this time. Please try again later.");
@@ -43,6 +44,7 @@
 		}
 		if (empty($errors)) {
             
+            $success = true;
             $success_message = get_theme_mod( 'success_message_setting');
             
             $name = $_POST['full_name'];
@@ -124,10 +126,29 @@
                     <input type="submit" name="submit" value="submit" class="form-submit">
                 </form>
                 
+                <p class="submit-message"><?php if(get_theme_mod( 'submit_message_setting') != ""){echo get_theme_mod( 'submit_message_setting');} ?></p>
+                
                 <?php if($_POST): ?>
-                    <p class="submit-message"><?php if($success_message) {echo $success_message;} ?></p>
-                <?php else: ?>
-                    <p class="submit-message"><?php if(get_theme_mod( 'submit_message_setting') != ""){echo get_theme_mod( 'submit_message_setting');} ?></p>
+                       <?php if($success === true): ?>                    
+                            <div class="success-modal-wrapper" id="successWrapper">
+                                <div class="success-modal" id="successModal">
+
+                                    <div class="modal-content">
+                                        <div class="success-tick">
+                                           <i class="fas fa-check-circle"></i>
+                                       </div>
+                                       <?php if($success_message != ""): ?>
+                                           <p class="modal-text text-secondary"><?= $success_message; ?></p>
+                                       <?php else: ?>
+                                           <p class="modal-text text-secondary">Thank you for your enquiry.</p>
+                                       <?php endif; ?>
+                                    </div>
+
+                                    <div class="close" id="closeSuccess">ok</div>
+
+                                </div>
+                            </div>
+                        <?php endif; ?>
                 <?php endif; ?>
                 
             </div>
@@ -135,5 +156,7 @@
             
         </div>
     </div>
+    
+    <button id="modalButton">Modal Button</button>
 
 <?php get_footer(); ?>

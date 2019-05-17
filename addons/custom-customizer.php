@@ -445,7 +445,7 @@ function custom_theme_customizer( $wp_customize ){
             'success_message_control',
             array(
                 'label' => __('Success Message', 'cmosTheme'),
-                'description' => 'Add a message to the user when the form has been submitted successfully.',
+                'description' => 'Add a pop up message to the user when the form has been submitted successfully.',
                 'section' => 'contact_form',
                 'settings' => 'success_message_setting',
                 'type' => 'textarea'
