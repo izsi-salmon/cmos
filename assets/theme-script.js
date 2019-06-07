@@ -117,7 +117,10 @@ function openDropdown(n){
 function closeSuccessModal(){
     successWrapper.style.display = 'none';
 }
-closeSuccess.addEventListener('click', closeSuccessModal, false);
+
+if(closeSuccess){
+    closeSuccess.addEventListener('click', closeSuccessModal, false);
+}
 
 if(successWrapper){
     window.onclick = function(event) {

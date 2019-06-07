@@ -17,7 +17,7 @@
             ?>
 
             <?php if ($custom_logo): ?>
-                <a href="<?= get_site_url(); ?>"><img src="<?= $logo_url ?>" alt="Logo"></a>
+                <a href="<?= get_site_url(); ?>"><img src="<?= $logo_url ?>" alt="Logo" class="logo"></a>
             <?php endif; ?>
             
         </div>

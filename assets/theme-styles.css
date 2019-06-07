@@ -39,6 +39,11 @@ html{
     z-index: 1000;
 }
 
+img.logo{
+    max-height: 35px;
+    max-width: 95px;
+}
+
 .column-right{
     display: flex;
         justify-content: flex-end;

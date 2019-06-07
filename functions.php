@@ -24,7 +24,7 @@ add_image_size( 'avatar', 300, 300, true );
 // Custom logo
 function addCustomLogo() {
 	add_theme_support('custom-logo', array(
-        'width' => 95,
+        'width' => 190,
 		'flex-height' => true,
 		'flex-width' => false
 	));
