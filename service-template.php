@@ -17,7 +17,7 @@
     $parag = implode($allParags);
     $heading = strip_tags($h2);
 
-    $pageTitle = get_the_title();
+    $pageSlug =  get_post_field( 'post_name', get_post() );
 
     $subservicesArgs = array(
         'post_type' => 'subservices',
@@ -27,7 +27,7 @@
         'meta_query' => array(
             array(
                 'key' => 'service_page',
-                'value' => $pageTitle
+                'value' => $pageSlug
                 )
             )
         );

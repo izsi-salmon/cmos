@@ -214,7 +214,7 @@ function show_metaboxes( $post, $args ) {
                     if( $servicepages->have_posts() ):
                       $output .= '<label for="' . $id . '">' . $field['title'] . '</label><br>';
                      while($servicepages->have_posts()): $servicepages->the_post();
-                         $postTitle = get_the_title();
+                         $postTitle = get_post_field( 'post_name', get_post() );
                           if($postTitle === $custom['service_page'][0]){
                             $output .= '<input type="radio" name="' . $id . '" value="'.$postTitle.'" checked=checked> '. $postTitle .'<br>';
                           } else{
