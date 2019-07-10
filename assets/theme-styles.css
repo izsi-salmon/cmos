@@ -8,6 +8,26 @@ html{
     color: #333;
 }
 
+h2:first-of-type{
+    margin-top: 0;
+}
+
+h2{
+    border-left: 1px solid #34a73a;
+    font-size: 1.3em;
+    padding: 0 0 0 0.5em;
+    font-weight: 400;
+    margin: 2em 0 1em 0;
+}
+
+p{
+    margin-bottom: 1em;
+}
+
+ul{
+    list-style-position: inside;
+}
+
 .visible-desktop{
     display: none;
 }
@@ -283,6 +303,11 @@ img.logo{
     padding: 1.7em 0;
 }
 
+.section-margin{
+    margin: 2em auto;
+    width: 90%;
+}
+
 .page-blurb-title{
     display: inline-block;
     font-size: 1.1em;
@@ -475,6 +500,14 @@ a.service-menu-item{
     color: #555;
     font-size: 0.9em;
     margin-top: 0.2em;
+}
+
+.business-logo{
+    height: auto;
+    margin-top: 0.3em;
+    max-height: 100px;
+    max-width: 40%;
+    width: auto;
 }
 
 /* TESTIMONIAL SWIPER */
@@ -1150,6 +1183,14 @@ a.value-cta{
         width: 80%;
     }
     
+    .section-margin{
+        width: 80%;
+    }
+    
+    h2{
+        font-size: 1.7em;
+    }
+    
     /* ^ PAGE FEATURES */
     
     /* SERVICE MENU */
@@ -1389,6 +1430,15 @@ a.value-cta{
     .section-title{
         font-size: 3em;
         width: 90%;
+    }
+    
+    .section-margin{
+        width: 50%;
+    }
+    
+    h2{
+        font-size: 1.7em;
+        width: 80%;
     }
     
     .contact-container{
@@ -1706,6 +1756,10 @@ a.value-cta{
     
     body{
         font-size: 1.2em;
+    }
+    
+    h2{
+        font-size: 2em;
     }
     
     .swiper-container-header, .banner-image{

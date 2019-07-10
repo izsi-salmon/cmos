@@ -159,7 +159,9 @@ function add_testimonials_post_type(){
         'menu_icon' => 'dashicons-format-quote',
         'supports' => array(
             'title',
-            'editor'
+            'editor',
+            'thumbnail',
+            'page-attributes'
         ),
         'query_var' => true
     );

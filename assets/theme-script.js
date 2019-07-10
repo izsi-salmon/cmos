@@ -130,7 +130,9 @@ if(successWrapper){
     }
 }
 
-// SWIPERS (Image and text slide shows)
+// SWIPERS 
+
+// Slide show
 
 var swiper = new Swiper('.swiper1', {
   slidesPerView: 1,
@@ -145,28 +147,38 @@ var swiper = new Swiper('.swiper1', {
   }
 });
 
+// Testimonials
+
 var swiper2 = new Swiper('.swiper2', {
   slidesPerView: 1,
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      }
+  loop: true,    
+  pagination: {
+    el: '.swiper-pagination',
+    clickable: true,
+  },
+  autoplay: {
+    delay: 12000,
+  }
 });
 
 var swiper3 = new Swiper('.swiper3', {
   slidesPerView: 3,
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-      breakpoints: {
-        1500: {
-          slidesPerView: 2,
-        },
-        1000: {
-          slidesPerView: 1,
-        }
-      }
+  loop: true,  
+  pagination: {
+    el: '.swiper-pagination',
+    clickable: true,
+  },
+  breakpoints: {
+    1500: {
+      slidesPerView: 2,
+    },
+    1000: {
+      slidesPerView: 1,
+    }
+  },
+  autoplay: {
+    delay: 12000,
+  }
 });
 
 // END

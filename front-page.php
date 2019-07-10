@@ -15,7 +15,7 @@
         'post_type' => 'testimonials',
         'posts_per_page' => -1,
         'order' => 'ASC',
-        'orderby' => 'date'
+        'orderby' => 'menu_order'
     );
     $testimonials = new WP_Query($testimonialArgs);
 
@@ -128,6 +128,9 @@
                                             <p><?= $association ?></p>
                                         <?php endif; ?>
                                     </div>
+                                    <?php if(has_post_thumbnail() ): ?>
+                                        <?php the_post_thumbnail('medium', ['class'=>'business-logo', 'alt'=>'Testimonial Business Logo']); ?>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                         
@@ -166,6 +169,9 @@
                                             <p><?= $association ?></p>
                                         <?php endif; ?>
                                     </div>
+                                    <?php if(has_post_thumbnail() ): ?>
+                                        <?php the_post_thumbnail('medium', ['class'=>'business-logo', 'alt'=>'Testimonial Business Logo']); ?>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                             
