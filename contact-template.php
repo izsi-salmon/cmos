@@ -111,7 +111,7 @@
              </div>
             
             <div class="contact-collumn">
-                <h2 class="form-title">Get a Free Quote:</h2>
+                <h3 class="form-title">Get a Free Quote:</h3>
                 <form method="post" action="<?= $pageUrl; ?>" class="contact-form">
                     <?php wp_nonce_field('wp_contact_form'); ?>
                     <label for="full_name">Name: *</label>

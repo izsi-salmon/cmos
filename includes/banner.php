@@ -22,5 +22,5 @@
         </div>
     </div>
 <?php else: ?>
-    <h1 class="section-title"><?= $theTitle ?></h1>
+    <h1 class="section-title"><?php the_title() ?></h1>
 <?php endif; ?>
