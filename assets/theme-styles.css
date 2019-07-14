@@ -1664,6 +1664,11 @@ a.value-cta{
         flex: 0.98;
     }
     
+    .testimonial-swiper-button{
+/*        background-size: 18px 30px;*/
+        opacity: 0.5;
+    }
+    
     /* SERVICE PAGE */
     
     .section-service-blurb{

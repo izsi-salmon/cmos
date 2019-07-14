@@ -151,7 +151,7 @@ var swiper = new Swiper('.swiper1', {
 
 var swiper2 = new Swiper('.swiper2', {
   slidesPerView: 1,
-  loop: true,    
+  loop: true,   
   pagination: {
     el: '.swiper-pagination',
     clickable: true,

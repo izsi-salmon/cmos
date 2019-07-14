@@ -92,10 +92,10 @@
     <div class="section testimonial-section">
           <?php if( get_theme_mod( 'testimonial_heading_setting') != "" ): ?>
             <div class="testimonial-heading-wrapper">
-               <h2 class="testimonial-heading">
+               <h3 class="testimonial-heading">
                    What our clients say
                    <div class="underline-grey underline-60 underline-wrap"></div>
-               </h2>
+               </h3>
            </div>
           <?php endif; ?>
               
