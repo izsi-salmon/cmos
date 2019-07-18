@@ -141,7 +141,8 @@
                     </div>
                 
                 <?php else: ?>
-                
+                    
+                    
                     <div class="swiper-container swiper3">
                         <div class="swiper-wrapper">
                         
@@ -183,7 +184,10 @@
                         <?php else: ?>
                             <div class="swiper-pagination swiper-pagination-large"></div>
                         <?php endif; ?>
+                        
                     </div>
+                    <div class="custom-swiper-button-prev testimonial-swiper-button"></div>
+                    <div class="custom-swiper-button-next testimonial-swiper-button"></div>
                 
                 <?php endif; ?>
     </div>

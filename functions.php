@@ -10,7 +10,7 @@ function addCustomThemeStyles(){
   // Scripts
   wp_enqueue_script('jquery');
   wp_enqueue_script('swiperscript', 'https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js', array(), '4.5.0', true);
-  wp_enqueue_script('themescripts', get_template_directory_uri().'/assets/theme-script.js', array(), '0.0.3', true);
+  wp_enqueue_script('themescripts', get_template_directory_uri().'/assets/theme-script.js', array(), '0.0.4', true);
   global $wp_query;
 }
 add_action('wp_enqueue_scripts', 'addCustomThemeStyles');

@@ -163,7 +163,11 @@ var swiper2 = new Swiper('.swiper2', {
 
 var swiper3 = new Swiper('.swiper3', {
   slidesPerView: 3,
-  loop: true,  
+  loop: true,
+  navigation: {
+    nextEl: '.custom-swiper-button-next',
+    prevEl: '.custom-swiper-button-prev',
+  },  
   pagination: {
     el: '.swiper-pagination',
     clickable: true,
