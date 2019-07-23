@@ -71,7 +71,7 @@ function custom_theme_customizer( $wp_customize ){
             'meta_descript_control',
             array(
                 'label' => __('Meta Description', 'cmosTheme'),
-                'description' => 'Edit the description in the browser',
+                'description' => 'Edit the meta description',
                 'section' => 'title_tagline',
                 'settings' => 'meta_descript_setting',
                 'type' => 'textarea'
