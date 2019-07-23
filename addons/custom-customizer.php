@@ -2,6 +2,8 @@
 
 function custom_theme_customizer( $wp_customize ){
     
+    // PANELS
+    
     $wp_customize->add_panel( 'custom_homepage_content', array(
       'title' => __( 'Home Page Content' ),
       'description' => $description,
@@ -13,6 +15,8 @@ function custom_theme_customizer( $wp_customize ){
       'description' => $description,
       'priority' => 160
     ) );
+    
+    // SECTIONS
     
     $wp_customize->add_section('homepage_text', array(
         'title' => __('Home Page Text', 'cmosTheme'),
@@ -51,6 +55,29 @@ function custom_theme_customizer( $wp_customize ){
     $wp_customize->add_section('footer_content', array(
         'title' => __('Footer Content', 'cmosTheme')
     ));
+    
+    // SETTINGS & CONTROLS
+    
+    // META DESCRIPTION
+    
+    $wp_customize->add_setting('meta_descript_setting', array(
+        'default' => '',
+        'transport' => 'none'
+    ));
+    
+    $wp_customize->add_control(
+        new WP_Customize_Control(
+            $wp_customize,
+            'meta_descript_control',
+            array(
+                'label' => __('Meta Description', 'cmosTheme'),
+                'description' => 'Edit the description in the browser',
+                'section' => 'title_tagline',
+                'settings' => 'meta_descript_setting',
+                'type' => 'textarea'
+            )
+        )
+    );
     
     // DOC MESSAGE
     

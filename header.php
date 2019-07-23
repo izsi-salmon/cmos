@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <?php if( get_theme_mod( 'meta_descript_setting') != "" ): ?>
+       <meta name="description" content="<?php echo get_theme_mod( 'meta_descript_setting'); ?>" />
+   <?php endif; ?>
     <title><?= get_bloginfo('name'); ?></title>
     <?php wp_head(); ?>
 </head>
