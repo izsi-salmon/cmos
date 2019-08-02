@@ -122,6 +122,8 @@ function add_slideshow_post_type(){
         'description' => 'a post type that creates slides for the homepage',
         'public' => true,
         'hierarchical' => true,
+        'exclude_from_search' => true,
+        'publicly_queryable' => false,
         'show_ui' => true,
         'show_in_menu' => true,
         'show_in_nav_menus' => false,
@@ -152,6 +154,8 @@ function add_testimonials_post_type(){
         'description' => 'a post type that adds testimonials to the home page.',
         'public' => true,
         'hierarchical' => true,
+        'exclude_from_search' => true,
+        'publicly_queryable' => false,
         'show_ui' => true,
         'show_in_menu' => true,
         'show_in_nav_menus' => false,
@@ -182,6 +186,10 @@ function add_locations_post_type(){
         'description' => 'A post type that creates the location addresses',
         'public' => true,
         'hierarchical' => true,
+        'exclude_from_search' => true,
+        'publicly_queryable' => false,
+        'exclude_from_search' => true,
+        'publicly_queryable' => false,
         'show_ui' => true,
         'show_in_menu' => true,
         'show_in_nav_menus' => false,
@@ -211,6 +219,8 @@ function add_subservices_post_type(){
         'description' => 'Post type that adds sub service to service page',
         'public' => true,
         'hierarchical' => true,
+        'exclude_from_search' => true,
+        'publicly_queryable' => false,
         'show_ui' => true,
         'show_in_menu' => true,
         'show_in_nav_menus' => false,
@@ -240,6 +250,8 @@ function add_aboutValues_post_type(){
         'description' => 'A post type that adds value sections to the about page',
         'public' => true,
         'hierarchical' => true,
+        'exclude_from_search' => true,
+        'publicly_queryable' => false,
         'show_ui' => true,
         'show_in_menu' => true,
         'show_in_nav_menus' => false,
@@ -269,6 +281,8 @@ function add_subValues_post_type(){
         'description' => 'A post type that adds sub values under an About Us value.',
         'public' => true,
         'hierarchical' => true,
+        'exclude_from_search' => true,
+        'publicly_queryable' => false,
         'show_ui' => true,
         'show_in_menu' => true,
         'show_in_nav_menus' => false,
@@ -284,7 +298,7 @@ function add_subValues_post_type(){
     register_post_type('subvalues', $args);
 }
 
-// People
+// PEOPLE
 
 function add_people_post_type(){
     $labels = array(
@@ -298,6 +312,8 @@ function add_people_post_type(){
         'description' => 'A post type that adds staff members to the people page',
         'public' => true,
         'hierarchical' => true,
+        'exclude_from_search' => true,
+        'publicly_queryable' => false,
         'show_ui' => true,
         'show_in_menu' => true,
         'show_in_nav_menus' => false,
@@ -328,6 +344,8 @@ function add_careervalues_post_type(){
         'description' => 'A post type that adds values to the careers page.',
         'public' => true,
         'hierarchical' => true,
+        'exclude_from_search' => true,
+        'publicly_queryable' => false,
         'show_ui' => true,
         'show_in_menu' => true,
         'show_in_nav_menus' => false,
@@ -343,6 +361,37 @@ function add_careervalues_post_type(){
     register_post_type('careervalues', $args);
 }
 
+// BLOGS
+
+function add_blogposts_post_type(){
+    $labels = array(
+        'name' => _x('Blog Posts', 'post type name', 'cmosTheme'),
+        'singular_name' => _x('Blog Post', 'post type singular name', 'cmosTheme'),
+        'add_new_item' => _x('Add blog post', 'Adding blog post', 'cmosTheme')
+    );
+    
+    $args = array(
+        'labels' => $labels,
+        'description' => 'A post type that adds a blog post to the blog page',
+        'public' => true,
+        'hierarchical' => true,
+        'exclude_from_search' => true,
+        'show_ui' => true,
+        'show_in_menu' => true,
+        'show_in_nav_menus' => false,
+        'menu_position' => 24,
+        'menu_icon' => 'dashicons-format-aside',
+        'supports' => array(
+            'title',
+            'editor',
+            'thumbnail',
+            'comments'
+        ),
+        'query_var' => true
+    );
+    register_post_type('blogposts', $args);
+}
+
 // ----- ADD POST TYPES ------
 
 add_action('init','add_slideshow_post_type');
@@ -353,6 +402,19 @@ add_action('init','add_subValues_post_type');
 add_action('init','add_people_post_type');
 add_action('init','add_subservices_post_type');
 add_action('init','add_careervalues_post_type');
+add_action('init','add_blogposts_post_type');
+
+// ----- REMOVE ACTIONS -----
+
+// Stop wordpress from rendering two meta descriptions
+remove_action('wp_head', 'description');
+
+// ----- FILTRES -----
+
+function wpdocs_excerpt_more( $more ) {
+    return '...';
+}
+add_filter( 'excerpt_more', 'wpdocs_excerpt_more' );
 
 // ----- REQUIREMENTS -----
 
