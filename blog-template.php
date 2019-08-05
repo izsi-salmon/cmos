@@ -31,7 +31,7 @@
                    <img src="<?= esc_url(get_the_post_thumbnail_url()) ?>" class="blog-card-image">
                 </a>
                 <div class="blog-card-content">
-                    <h3><a href="<?= esc_url(get_permalink()) ?>"><?= the_title(); ?></a></h3>
+                    <h4 class="blog-card-title"><a href="<?= esc_url(get_permalink()) ?>"><?= the_title(); ?></a></h4>
                     <p class="blog-card-date"><?php echo get_the_date( 'd/m/y' ); ?></p>
                     <div class="blog-card-description"><?= the_excerpt() ?></div>
                     <a href="<?= esc_url(get_permalink()) ?>" class="blog-card-read-more">Read more</a>

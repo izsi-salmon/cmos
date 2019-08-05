@@ -385,6 +385,7 @@ function add_blogposts_post_type(){
             'title',
             'editor',
             'thumbnail',
+            'author',
             'comments'
         ),
         'query_var' => true
