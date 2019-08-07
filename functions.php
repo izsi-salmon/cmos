@@ -7,6 +7,7 @@ function addCustomThemeStyles(){
   wp_enqueue_style('swipercss', 'https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css', array(), '4.5.0', 'all');
   wp_enqueue_style('maincss', get_template_directory_uri().'/assets/theme-styles.css', array(), '0.0.4', 'all');
   wp_enqueue_style('CustomFieldStyle', get_template_directory_uri() . '/assets/custom-fields-styles.css', array(), '1.0.0', 'all');
+  wp_enqueue_style('commentstyles', get_template_directory_uri() . '/assets/comments-styles.css', array(), '1.0.0', 'all');
   // Scripts
   wp_enqueue_script('jquery');
   wp_enqueue_script('swiperscript', 'https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js', array(), '4.5.0', true);

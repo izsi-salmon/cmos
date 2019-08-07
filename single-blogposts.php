@@ -20,6 +20,11 @@
             <span>By <?php the_author(); ?>, <?php echo get_the_date( 'F j, Y' ); ?></span>
         </div>
         <?php the_content(); ?>
+        
+        <?php if( comments_open() ): ?>
+            <?php comments_template(); ?>
+         <?php endif; ?>
+         
     </div>
 <?php endwhile; wp_reset_query(); ?>
 

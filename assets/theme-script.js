@@ -62,10 +62,19 @@ function toggleMenu(){
     } else{
         // Setting the mobile nav position based on navbar height
         var mobileNavDiv = document.getElementsByClassName('nav')[0];
-        mobileNavContent.style.maxHeight = mobileNavContent.scrollHeight + 'px';
+        if(mobileNavContent.scrollHeight + parsedNavHeight > document.documentElement.clientHeight){
+            mobileNavContent.style.maxHeight = (document.documentElement.clientHeight - parsedNavHeight) + 'px';
+        } else if(headerCta && (mobileNavContent.scrollHeight + parsedNavHeight + ctaHeight > document.documentElement.clientHeight)){
+//            if(){
+                mobileNavContent.style.maxHeight = (document.documentElement.clientHeight - parsedNavHeight - ctaHeight) + 'px';
+//            }
+        }else{
+            mobileNavContent.style.maxHeight = mobileNavContent.scrollHeight + 'px';
+        }
         dropshadow.style.opacity = '0.4';
         dropshadow.style.pointerEvents = 'auto';
         document.body.style.overflow = 'hidden';
+        mobileNavContent.style.overflow = 'scroll';
         pageBuffer.style.height = 0;
         // Change CTA styles
         if(headerCta){
