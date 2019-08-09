@@ -15,11 +15,13 @@
 
 <?php while(have_posts()) : the_post(); ?>
     <div class="section section-margin">
-        <h2 class="blog-title"><?= the_title(); ?></h2>
+        <h1 class="blog-title"><?= the_title(); ?></h1>
         <div class="blog-details">
             <span>By <?php the_author(); ?>, <?php echo get_the_date( 'F j, Y' ); ?></span>
         </div>
-        <?php the_content(); ?>
+        <div class="content-image-wrapper blog-single-content">
+            <?php the_content(); ?>
+        </div>
         
         <?php if( comments_open() ): ?>
             <?php comments_template(); ?>

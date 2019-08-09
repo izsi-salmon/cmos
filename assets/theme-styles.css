@@ -8,6 +8,15 @@ html{
     color: #333;
 }
 
+a{
+    color:#0072bc;
+    text-decoration: none;
+}
+
+a:hover{
+    color: #008EED;
+}
+
 h2:first-of-type{
     margin-top: 0;
 }
@@ -20,17 +29,21 @@ h2{
     margin: 2em 0 1em 0;
 }
 
+.text-border-left{
+    border-left: 1px solid #34a73a;
+    padding: 0 0 0 0.5em;
+}
+
 h3{
     font-size: 1.5em;
     font-weight: 400;
-    margin: 1.2em 0 0.5em 0;
 }
 
 p{
     margin-bottom: 1em;
 }
 
-ul{
+ul, ol{
     list-style-position: inside;
 }
 
@@ -48,6 +61,11 @@ ul{
 
 .centred-content{
     text-align: center;
+}
+
+.content-image-wrapper img{
+    height: auto;
+    max-width: 100%;
 }
 
 /* MAIN NAVIGATION */
@@ -695,6 +713,7 @@ a.value-cta{
     
 .blog-section{
     margin: 0 auto;
+    padding: 0em 0 2em 0;
     width: 90%;
 }
 
@@ -778,7 +797,27 @@ a.blog-card-read-more:hover{
     color: #888;
     margin-top: 1em;
     margin-bottom: 2em;
-    padding-left: 1em;
+}
+
+.blog-single-content h3{
+    margin: 1.2em 0 0.5em 0;
+}
+
+#navigation-table {
+    background: #f9f9f9;
+    border: 1px solid #AAA;
+    border-radius: 5px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    display: table;
+    margin: 2em 0;
+    padding: 1em;
+    position: relative;
+    width: auto;
+}
+
+#navigation-table h2, #navigation-table h3, #navigation-table h4, #navigation-table h5, #navigation-table h6{
+    margin: 0 0 0.3em 0;
 }
 
 /* CONTACT */
@@ -1383,11 +1422,15 @@ a.blog-card-read-more:hover{
             flex-flow: row wrap;
             justify-content: flex-start;
     }
+    
+    .blog-row-centered{
+        justify-content: center;
+    }
 
     .blog-card{
         box-sizing: border-box;
-        flex-basis: calc(50% - 14px);
-        margin: 0 7px 1em 7px;
+        flex-basis: calc(50% - 28px);
+        margin: 0 14px 2em 14px;
     }
     
     .blog-card-image-container{
@@ -1407,12 +1450,6 @@ a.blog-card-read-more:hover{
         position: absolute;
         left: 1em;
         bottom: 1em;
-    }
-    
-    /* BLOGSINGLE */
-    
-    .blog-details{
-        padding-left: 1.5em;
     }
     
     /* CONTACT */
@@ -1535,10 +1572,6 @@ a.blog-card-read-more:hover{
     
     /* PAGE FEATURES*/
     
-    .section{
-        padding: 3em 0;
-    }
-    
     .banner-image{
         min-height: 30em;
     }
@@ -1587,10 +1620,6 @@ a.blog-card-read-more:hover{
     
     .section-margin{
         width: 50%;
-    }
-    
-    h2{
-        width: 80%;
     }
     
     .contact-container{
@@ -1876,7 +1905,7 @@ a.blog-card-read-more:hover{
     /* BLOG */
 
     .blog-card{
-        flex-basis: calc(33.3% - 14px);
+        flex-basis: calc(33.3% - 28px);
     }
     
     /* BLOGSINGLE */

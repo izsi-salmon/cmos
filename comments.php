@@ -59,15 +59,38 @@ if( post_password_required() ){
     
     <?php if( have_comments() ): ?>
     <!--  We have comments  -->
-        <ol class="comments-list">
+       <?php function format_comment($comment, $args, $depth) {  ?>
+                   <li <?php comment_class('comment-item'); ?> id="li-comment-<?php comment_ID() ?>">
+                      <div class="comment-content">
+                           <div class="comment-avatar-container">
+                               <?php echo get_avatar($comment, 40, $default, $alt, $args); ?>
+                           </div>
+                           <div class="comment-text-content">
+                               <span class="comment-author"><?php echo get_comment_author(); ?></span>
+                               <span class="comment-date text-secondary"><?php echo get_comment_date(); ?>, <?php echo get_comment_time(); ?></span>
+                               <div class="comment-text"><?php echo get_comment_text(); ?></div>
+                               <a href="<?php get_comment_reply_link(); ?>"><?php echo $args['reply_text'] ?></a>
+                           </div>
+           <?php } ?>
+        
+        <?php function close_comment($comment, $args, $depth){ ?>
+                       </div>
+                    </li>
+            <?php if($depth !== 1): ?>
+                <hr class="comments-underline comments-underline-between"></hr>
+            <?php endif; ?>
+
+       <?php } ?>
+        
+        <ol class="custom-comments-list">
             <?php
             
             $args = array(
-                'walker' => new Walker_Comment(),
+                'walker' => null,
                 'max_depth' => 2,
                 'style' => 'ol',
-                'callback' => null,
-                'end-callback' => null,
+                'callback' => 'format_comment',
+                'end-callback' => 'close_comment',
                 'type' => 'all',
                 'reply_text' => 'Reply',
                 'page' => '',
@@ -83,7 +106,7 @@ if( post_password_required() ){
             wp_list_comments($args);
             
             ?>
-        </ol>
+        </ol>        
        
         <?php if( !comments_open() && get_comments_number() ): ?>
             <p><?php esc_html_e('Comments are closed', 'cmosTheme'); ?></p>

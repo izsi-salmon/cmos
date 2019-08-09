@@ -47,6 +47,7 @@ function toggleMenu(){
         dropshadow.style.opacity = '0';
         dropshadow.style.pointerEvents = 'none';
         document.body.style.overflow = 'auto';
+        mobileNavContent.style.overflow = 'hidden';
         if(headerCta){
             pageBuffer.style.height = parsedNavHeight + ctaHeight + 'px';
             headerCta.style.backgroundColor = '#3EAB46';
@@ -64,17 +65,16 @@ function toggleMenu(){
         var mobileNavDiv = document.getElementsByClassName('nav')[0];
         if(mobileNavContent.scrollHeight + parsedNavHeight > document.documentElement.clientHeight){
             mobileNavContent.style.maxHeight = (document.documentElement.clientHeight - parsedNavHeight) + 'px';
+            mobileNavContent.style.overflow = 'scroll';
         } else if(headerCta && (mobileNavContent.scrollHeight + parsedNavHeight + ctaHeight > document.documentElement.clientHeight)){
-//            if(){
                 mobileNavContent.style.maxHeight = (document.documentElement.clientHeight - parsedNavHeight - ctaHeight) + 'px';
-//            }
+                mobileNavContent.style.overflow = 'scroll';
         }else{
             mobileNavContent.style.maxHeight = mobileNavContent.scrollHeight + 'px';
         }
         dropshadow.style.opacity = '0.4';
         dropshadow.style.pointerEvents = 'auto';
         document.body.style.overflow = 'hidden';
-        mobileNavContent.style.overflow = 'scroll';
         pageBuffer.style.height = 0;
         // Change CTA styles
         if(headerCta){
