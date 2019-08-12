@@ -19,23 +19,23 @@ if( post_password_required() ){
         );
        ?>
    </h3>   
-   <hr class="comments-underline"></hr>
+   <hr class="comments-underline comments-underline-space-below"></hr>
    
    <?php
 
         $fields  = array(
             'author' =>
-               '<p class="comment-form-author comments-text-input">' .
+               '<div class="comment-form-author comments-text-input">' .
                '<input id="author" name="author" type="text" placeholder="Name" value="' . esc_attr( $commenter['comment_author'] ) .
-               '" required="required" /></p>',
+               '" required="required" /></div>',
             'email' =>
-                '<p class="comment-form-email comments-text-input">' .
+                '<div class="comment-form-email comments-text-input">' .
                 '<input id="email" name="email" type="email" placeholder="Email" value="' . esc_attr(  $commenter['comment_author_email'] ) .
-                '" required="required" /></p>',
+                '" required="required" /></div>',
             'cookies' =>
                '<p class="comment-form-cookies-consent comments-cookie">
                <input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes" class="comments-cookie-input"' . $consent . ' />' . 
-            '<label for="wp-comment-cookies-consent" class="text-secondary">' . __( 'Save my name, email, and website in this browser for the next time I comment.' ) . 
+            '<label for="wp-comment-cookies-consent" class="text-secondary">' . __( 'Save my name and email in this browser for the next time I comment.' ) . 
             '</label></p>'
         );
             
@@ -47,7 +47,7 @@ if( post_password_required() ){
             'title_reply_to' => 'Reply to %s',
             'logged_in_as' => '<p class="logged-in-as text-secondary">' . sprintf( __( 'Logged in as %2$s, <a href="%3$s" title="Log out of this account" class="logged-in-as-link">log out?</a>' ), admin_url( 'profile.php' ), $user_identity, wp_logout_url( apply_filters( 'the_permalink', get_permalink( ) ) ) ) . '</p>',
             'comment_notes_before' => '<p class="comment-notes text-secondary">' . __( 'Your email address will not be published.' ) . ( $req ? $required_text : '' ) . '</p>',
-            'comment_field' => '<p class="comment-form-comment comments-text-input"><textarea id="comment" name="comment" placeholder="Comment" aria-required="true">' . '</textarea></p>',
+            'comment_field' => '<div class="comment-form-comment comments-text-input"><textarea id="comment" name="comment" placeholder="Comment" aria-required="true">' . '</textarea></div>',
             'submit_field' => '%1$s %2$s',
             'fields' => apply_filters('comment_form_default_fields', $fields)
         );
@@ -55,12 +55,12 @@ if( post_password_required() ){
     
     <?php comment_form($args); ?>
     
-    <hr class="comments-underline"></hr>
+    <hr class="comments-underline comments-underline-between"></hr>
     
     <?php if( have_comments() ): ?>
     <!--  We have comments  -->
        <?php function format_comment($comment, $args, $depth) {  ?>
-                   <li <?php comment_class('comment-item'); ?> id="li-comment-<?php comment_ID() ?>">
+                   <li <?php comment_class('comment-item'); ?> id="comment-<?php comment_ID() ?>">
                       <div class="comment-content">
                            <div class="comment-avatar-container">
                                <?php echo get_avatar($comment, 40, $default, $alt, $args); ?>
@@ -69,7 +69,18 @@ if( post_password_required() ){
                                <span class="comment-author"><?php echo get_comment_author(); ?></span>
                                <span class="comment-date text-secondary"><?php echo get_comment_date(); ?>, <?php echo get_comment_time(); ?></span>
                                <div class="comment-text"><?php echo get_comment_text(); ?></div>
-                               <a href="<?php get_comment_reply_link(); ?>"><?php echo $args['reply_text'] ?></a>
+<!--                               <a href=" <?php //comment_reply_link(array_merge( $args, array('depth' => $depth))); ?>" ></a>-->
+                               <div class="reply">
+                                <?php comment_reply_link( 
+                                     array_merge( 
+                                         $args, 
+                                         array( 
+                                             'add_below' => $add_below, 
+                                             'depth'     => $depth, 
+                                             'max_depth' => $args['max_depth'] 
+                                         ) 
+                                     ) 
+                                 ); ?>
                            </div>
            <?php } ?>
         

@@ -17,8 +17,13 @@
     margin: 1.5em 0;
 }
 
+.comments-underline-space-below{
+    margin: 0.5em 0 1em 0;
+}
+
 .comments-sub-title{
     font-size: 1.2em;
+    margin-bottom: 0.3em;
 }
 
 .logged-in-as-link{
@@ -30,18 +35,29 @@
     width: 100%;
 }
 
+.cmos-comments-form p{
+    margin-bottom: 1.5em;
+}
+
 .comments-text-input input, .comments-text-input textarea{
     border: 1px solid #D4D4D4;
     border-radius: 10px;
     box-sizing: border-box;
+    margin-bottom: 0.5em;
     padding: 0.3em 0.6em;
     transition: 0.3s;
     width: 100%;
 }
 
+.comments-text-input:last-of-type{
+    margin-bottom: 1em;
+}
+
+
 .comments-text-input textarea{
     height: 100px;
     padding: 0.6em 0.9em;
+    resize: none;
 }
 
 .comments-text-input input:focus,.comments-text-input textarea:focus{
@@ -110,5 +126,32 @@
     font-weight: 600;
 }
 
+.comment-text{
+    margin: 0.5em 0;
+}
+
+.comment-text-content a{
+    color: #34a73a;
+    font-weight: 800;
+}
 
 
+@media only screen and (min-width: 768px){
+    
+    .comments-text-input textarea{
+        height: 150px;
+    }
+    
+    .custom-comments-list ol .comment-date{
+        display: inline;
+    }
+    
+}
+
+@media only screen and (min-width: 1200px){
+    
+    .comments-text-input textarea{
+        height: 170px;
+    }
+    
+}
