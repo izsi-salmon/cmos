@@ -5,7 +5,7 @@ function addCustomThemeStyles(){
   wp_enqueue_style('googlefonts', 'https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700|Nunito:400,700', array(), '0.0.1', 'all');
   wp_enqueue_style('fontawesome', 'https://use.fontawesome.com/releases/v5.7.2/css/all.css', array(), '5.7.2', 'all');
   wp_enqueue_style('swipercss', 'https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css', array(), '4.5.0', 'all');
-  wp_enqueue_style('maincss', get_template_directory_uri().'/assets/theme-styles.css', array(), '0.0.8', 'all');
+  wp_enqueue_style('maincss', get_template_directory_uri().'/assets/theme-styles.css', array(), '0.0.9', 'all');
   wp_enqueue_style('CustomFieldStyle', get_template_directory_uri() . '/assets/custom-fields-styles.css', array(), '1.0.0', 'all');
   wp_enqueue_style('commentstyles', get_template_directory_uri() . '/assets/comments-styles.css', array(), '1.0.0', 'all');
   // Scripts
@@ -412,6 +412,9 @@ add_action('init','add_blogposts_post_type');
 remove_action('wp_head', 'description');
 
 // ----- FILTRES -----
+
+// Stops Yoast Seo from breaking replytocom (Reply to comment link functionality)
+add_filter( 'wpseo_remove_reply_to_com', '__return_false' );
 
 function wpdocs_excerpt_more( $more ) {
     return '...';

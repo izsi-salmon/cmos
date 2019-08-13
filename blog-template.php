@@ -22,8 +22,7 @@
     $blogposts = new WP_Query($blogpostsArgs);
 ?>
 
-
-<div class="section blog-section">
+<div class="section blog-section <?php  if(has_post_thumbnail()): ?>section-blog-with-banner<?php endif; ?>">
     <?php if($blogposts->have_posts()): ?>
       
        <?php if(sizeof($blogposts->posts) < 3): ?>

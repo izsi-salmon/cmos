@@ -59,7 +59,6 @@ if( post_password_required() ){
     <hr class="comments-underline comments-underline-between"></hr>
     
     <?php if( have_comments() ): ?>
-    <!--  We have comments  -->
        <?php function format_comment($comment, $args, $depth) {  ?>
                    <li <?php comment_class('comment-item'); ?> id="comment-<?php comment_ID() ?>">
                       <div class="comment-content">
@@ -70,7 +69,6 @@ if( post_password_required() ){
                                <span class="comment-author"><?php echo get_comment_author(); ?></span>
                                <span class="comment-date text-secondary"><?php echo get_comment_date(); ?>, <?php echo get_comment_time(); ?></span>
                                <div class="comment-text"><?php echo get_comment_text(); ?></div>
-<!--                               <a href=" <?php //comment_reply_link(array_merge( $args, array('depth' => $depth))); ?>" ></a>-->
                                <div class="reply">
                                 <?php comment_reply_link( 
                                      array_merge( 
