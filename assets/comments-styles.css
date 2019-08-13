@@ -14,7 +14,7 @@
 }
 
 .comments-underline-between{
-    margin: 1.5em 0;
+    margin: 1em 0;
 }
 
 .comments-underline-space-below{
@@ -24,6 +24,14 @@
 .comments-sub-title{
     font-size: 1.2em;
     margin-bottom: 0.3em;
+}
+
+.cancel-reply-link{
+    font-size: 0.8em;
+}
+
+.cancel-reply-link a{
+    color: inherit;
 }
 
 .logged-in-as-link{
@@ -115,10 +123,6 @@
 
 .comment-avatar-container img{
     border-radius: 50%;
-}
-
-.comment-text-content{
-    padding-top: 7px;
 }
 
 .comment-author{

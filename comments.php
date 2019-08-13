@@ -45,6 +45,7 @@ if( post_password_required() ){
             'title_reply_before' => '<h3 id="reply-title" class="comment-reply-title comments-sub-title">',
             'title_reply' => 'Leave a comment',
             'title_reply_to' => 'Reply to %s',
+            'cancel_reply_before' => '<br><span class="cancel-reply-link text-secondary">',
             'logged_in_as' => '<p class="logged-in-as text-secondary">' . sprintf( __( 'Logged in as %2$s, <a href="%3$s" title="Log out of this account" class="logged-in-as-link">log out?</a>' ), admin_url( 'profile.php' ), $user_identity, wp_logout_url( apply_filters( 'the_permalink', get_permalink( ) ) ) ) . '</p>',
             'comment_notes_before' => '<p class="comment-notes text-secondary">' . __( 'Your email address will not be published.' ) . ( $req ? $required_text : '' ) . '</p>',
             'comment_field' => '<div class="comment-form-comment comments-text-input"><textarea id="comment" name="comment" placeholder="Comment" aria-required="true">' . '</textarea></div>',
