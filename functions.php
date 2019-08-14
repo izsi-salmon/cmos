@@ -415,7 +415,7 @@ remove_action('wp_head', 'description');
 
 // Stops Yoast Seo from breaking replytocom (Reply to comment link functionality)
 add_filter( 'wpseo_remove_reply_to_com', '__return_false' );
-
+// Changes the_excerpt() more text
 function wpdocs_excerpt_more( $more ) {
     return '...';
 }
